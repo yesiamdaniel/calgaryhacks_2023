@@ -19,7 +19,7 @@ const Home = () => {
         cashReward: 1500,
         timeMinutes: 20, // could be a time object
         timeHours: 0,
-        progress: 75 // this will be stored in the user object
+        progress: 0.75 // this will be stored in the user object
     };
 
     return (
