@@ -7,6 +7,7 @@ import { useRouter } from "expo-router";
 import  { getFirestore, collection, query, where, getDocs, setDoc, doc, updateDoc, FieldValue, increment } from 'firebase/firestore';
 import { firebaseConfig, app, db } from "../../constants/firebase";
 import { desKey } from "../../constants/userKeys";
+import LessonComplete from "./LessonComplete";
 
 
 
@@ -14,72 +15,15 @@ import { desKey } from "../../constants/userKeys";
 const Lesson = (props) => {
     const router = useRouter();
 
-
-
-
     const [path1Data, setPath1Data] = useState(undefined);
     const [module1Data, setModule1Data] = useState(undefined);
     const [lessonsData, setLessonsData] = useState([{
         name:""
     }]);
    
-
-    const path1_data = () => {
-            const q = query(collection(db, "Path1/"), where("id", "==", 0));
-            const docs = getDocs(q).then((docs) => {  
-            docs.forEach((x) => {
-                setPath1Data(x.data());
-                
-            })             
-    });
-}
-
-    const module1_data = () => {
-        const q = query(collection(db, "Path1/Path1/Module1.1"), where("id", "==", 0));
-
-        const docs = getDocs(q).then((docs) => {  
-
-        docs.forEach((x) => {
-                setModule1Data(x.data());
-            })             
-        });
-
+    const routeHome = () => {
+        router.push("/(tabs)/Learn")
     }
-
-    const lessons_data = () => {
-        const q = query(collection(db, "Path1/Path1/Module1.1"), where("id", ">", 0));
-
-        const docs = getDocs(q).then((docs) => {  
-
-        const arr = [];
-
-        docs.forEach((x) => {
-            if (lessonsData[0].name === "") {
-                setLessonsData([x.data()]);
-            }
-            else {
-                setLessonsData(old => [...old, x.data()]);  
-            }
-
-            })             
-        });
-    
-    }
-    
-
-
-    useEffect(() => {
-        if (path1Data == undefined) {
-            path1_data();
-        }
-        if (module1Data == undefined) {
-            module1_data();
-        }
-        if (lessonsData[0].name === "") {
-            lessons_data();
-        }
-    }, [, lessonsData]); 
-
 
     [currentView, setView] = useState("lesson");
     [success, setSucces] = useState(undefined);
@@ -108,7 +52,7 @@ const Lesson = (props) => {
     const tog4 = () => {
         set4(!answer4);
     }
-
+''
 
 
 
@@ -142,30 +86,16 @@ const Lesson = (props) => {
 
 
 
-    const getProfile = () => {
-        var prof = {};
-        const q = query(collection(db, "users"), where("id", "==", desKey));
-        const doc = getDocs(q).then((docs) => {
-            docs.forEach((x) => {
-                prof = x.data();
-                alert(x.data());
-            });
-        });
-        setProfile(prof);
-    }
-
-
     const updateProfile = () => {
 
         if (passFail) {
             const upload = updateDoc(doc(db, "users", desKey), 
                 {dollarsEarned : increment(props.info.reward)}
               
-              ).then(alert("Upload Success")); 
+              ).then(setView("submission")); 
         }
-        else {
-            alert("No pussy")
-        }
+        setSubmitted(false);
+        setView("submission"); 
 
     }
 
@@ -174,7 +104,7 @@ const Lesson = (props) => {
             updateProfile();
         }
     
-    }, [submitted, answer1, answer2, answer3, answer4])
+    }, [currentView, submitted, answer1, answer2, answer3, answer4])
        
     
 
@@ -312,6 +242,8 @@ const Lesson = (props) => {
         </Button>
 
 
+
+
         </View>
 
 
@@ -329,12 +261,35 @@ const Lesson = (props) => {
 
       );
 
+      const completedScreen =  (
 
-    if (currentView === "lesson") {
-        return (base)
+        <LessonComplete info={props.info} result="complete">
+
+        </LessonComplete>
+      );
+      const failedScreen =  (
+
+        <LessonComplete info={props.info} result="failed">
+
+        </LessonComplete>
+      );
+
+
+    if (currentView === "submission") {
+        if (passFail) {
+            return completedScreen;
+        }
+        else {
+            return failedScreen
+        }
     }
     else {
-        return (quiz)
+        if (currentView === "lesson") {
+            return (base)
+        }
+        else {
+            return (quiz)
+        }
     }
 
 
