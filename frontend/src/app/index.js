@@ -75,8 +75,7 @@ const Home = () => {
         if (lessonsData[0].name === "") {
             lessons_data();
         }
-        alert(JSON.stringify(lessonsData[0]));
-    }, [,]); 
+    }, [, lessonsData]); 
 
     
 
@@ -84,7 +83,7 @@ const Home = () => {
     return (
 
         <View style={styles.container}>
-            
+        
         <Lesson info={lessonsData[0]}>
 
         </Lesson>

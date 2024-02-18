@@ -14,6 +14,7 @@ import { firebaseConfig, app, db } from "../../constants/firebase";
 
 const Lesson = (props) => {
     const router = useRouter();
+
     [currentView, setView] = useState("quiz");
 
 
@@ -43,7 +44,6 @@ const Lesson = (props) => {
 
         <ScrollView style={styles.scrollView}>
           <View style={styles.container}>
-
   
           <View style={styles.topBar}>
   
@@ -67,18 +67,20 @@ const Lesson = (props) => {
           </SafeAreaView>
       );
 
-
+//#6b53ff
       const quiz = (
 <SafeAreaView style={styles.SafeAreaView}>
 
 <ScrollView style={styles.scrollView}>
-  <View style={styles.container}>
 
+  <View style={styles.container}>
+  <ImageBackground
+    source={require("../../assets/quiz_background.png")} resizeMode='cover' style={{flex:1, width:"100%", height:"100%"}}>
 
   <View style={styles.topBar}>
 
           <Text h3Style={styles.header} h3>
-                  Quiz
+                  
           </Text>
 
       </View>
@@ -94,22 +96,27 @@ const Lesson = (props) => {
 
         <View 
         style={styles.buttonContainer} id="buttons">
-        <Button color="#6b53ff" 
+        <Button 
+        titleStyle={{color:"black"}}
+        color="#ffffff"
         style={styles.answerButton} 
         title={props.info.answers[0]}
         radius="15">
         </Button>
-        <Button color="#6b53ff" 
+        <Button color="#ffffff" 
+        titleStyle={{color:"black"}}
         style={styles.answerButton} 
         title={props.info.answers[1]}
         radius="15">
         </Button>
-        <Button color="#6b53ff" 
+        <Button color="#ffffff" 
+        titleStyle={{color:"black"}}
         style={styles.answerButton} 
         title={props.info.answers[2]}
         radius="15">
         </Button>
-        <Button color="#6b53ff" 
+        <Button color="#ffffff" 
+        titleStyle={{color:"black"}}
         style={styles.answerButton} 
         title={props.info.answers[3]}
         radius="15">
@@ -125,7 +132,8 @@ const Lesson = (props) => {
   
 
       </View>
-
+  
+      </ImageBackground>
   </View>
   </ScrollView>
   </SafeAreaView>
@@ -151,7 +159,8 @@ const styles = StyleSheet.create({
         flexDirection:"column",
         paddingTop: 24,
         backgroundColor: "#ffffff",
-        width: Dimensions.get('window').width
+        width: Dimensions.get('window').width,
+        height: Dimensions.get('window').height
 
     },
     main: {
@@ -159,7 +168,7 @@ const styles = StyleSheet.create({
         alignItems:"center",
         marginTop:"10px",
         maxWidth: 960,
-        backgroundColor: "#ffffff",
+    
         width: Dimensions.get('window').width
     },
     title: {
@@ -180,7 +189,7 @@ const styles = StyleSheet.create({
         
     },
     topBar: {
-        backgroundColor:"#ffffff",
+       
         flexDirection:"row",
         width: "100%",
         marginBottom:100
@@ -209,7 +218,6 @@ const styles = StyleSheet.create({
         marginLeft:"10%",
         width:"80%",
         alignSelf:"flex-start",
-        flex:1,
         fontSize:20,
         backgroundColor:"white",
         textAlign:"center",
@@ -217,7 +225,8 @@ const styles = StyleSheet.create({
         shadowOffset: {width: -2, height: 4},
         shadowOpacity: 0.3,
         shadowRadius: 3,
-        borderRadius:10
+        borderRadius:10,
+        height:60,
     },
     scrollView : {
         marginHorizontal:0
@@ -226,9 +235,12 @@ const styles = StyleSheet.create({
         width: Dimensions.get('window').width
     },
     answerButton:{
-        backgroundColor:"#6b53ff",
         padding:5,
-        radius:10
+        radius:10,
+        shadowColor: '#171717',
+        shadowOffset: {width: -2, height: 4},
+        shadowOpacity: 0.3,
+        shadowRadius: 3,
     },
     buttonContainer: {
         alignContent:"center",
