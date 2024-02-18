@@ -1,14 +1,14 @@
 import { View, Text } from 'react-native'
 import { useEffect } from 'react';
 import { useSelector } from "react-redux";
-import { selectCurrentPage } from '../redux/slice/pageSlice';
-import { PAGES } from '../constants/actions';
-import { setPage } from '../redux/slice/pageSlice';
+import { selectCurrentPage } from '../../redux/slice/pageSlice';
+import { PAGES } from '../../constants/actions';
+import { setPage } from '../../redux/slice/pageSlice';
 
-import Navbar from '../components/Navbar/Navbar';
-import Home from '../pages/Home/Home';
-import Explore from '../pages/Explore/Explore';
-import Learn from '../pages/Learn/Learn';
+import Navbar from './Navbar';
+import Home from '../../pages/Home/Home';
+import Explore from '../../pages/Explore/Explore';
+import Learn from '../../pages/Learn/Learn';
 import Progress from '../pages/Progress/Progress';
 import Profile from '../pages/Profile/Profile';
 import Path from '../pages/Path/Path';
