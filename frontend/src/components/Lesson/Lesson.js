@@ -74,16 +74,6 @@ const Lesson = (props) => {
     }
 
 
-    const testFire = () => {
-        const q = query(collection(db, "Path1/Path1/Module1.1"))
-        const docs = getDocs(q).then((docs) => {
-  
-            docs.forEach((x) => {
-                alert(JSON.stringify(x.data()));
-              })
-        }) ; 
-    }
-
 
     const getProfile = () => {
         var prof = {};

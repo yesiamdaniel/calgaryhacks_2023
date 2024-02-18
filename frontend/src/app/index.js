@@ -6,6 +6,7 @@ import { useState, useEffect } from "react";
 import Explore from "../components/Explore/Explore"
 import Accounts from "../components/Accounts/Accounts";
 import Lesson from "../components/Lesson/Lesson";
+import LessonComplete from "../components/Lesson/LessonComplete";
 
 import  { increment, FieldValue, getFirestore, collection, query, where, getDocs, setDoc, doc, updateDoc } from 'firebase/firestore';
 import { firebaseConfig, app, db } from "../constants/firebase";
@@ -84,9 +85,9 @@ const Home = () => {
 
         <View style={styles.container}>
         
-        <Lesson info={lessonsData[0]}>
-            
-        </Lesson>
+        <LessonComplete>
+
+        </LessonComplete>
 
         </View>
     );
