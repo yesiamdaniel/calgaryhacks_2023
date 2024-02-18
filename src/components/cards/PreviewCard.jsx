@@ -1,16 +1,17 @@
 import { Redirect } from "expo-router";
-import React from "react";
 import styles from "../../styles/styles";
 import { View, TouchableOpacity, Text, Image, ImageBackground, Button } from "react-native";
-import ProgressBarContainer from "../utilites/ProgressBarContainer";
+import ProgressBarContainer from "../utilities/ProgressBarContainer";
 
 const PreviewCard = ({ preview }) => {
     return (
         <View style={styles.cardContainer}>
+
             <ImageBackground
                 source={{ uri: preview.imageURL }}
                 resizeMode='cover'
                 imageStyle={styles.card}>
+                <View style={styles.imageOverlay}></View>
                 <TouchableOpacity style={styles.cardTextContainer}>
                     <View style={styles.cardTextTopRow}>
                         <Text style={styles.cardText}>{preview.timeMinutes} minutes</Text>
@@ -29,8 +30,8 @@ const PreviewCard = ({ preview }) => {
                         <Text style={styles.cardTextMoney}>+${preview.cashReward}</Text>
                         <Text style={styles.cardText}>Click to get started</Text>
                     </View>
-
                 </TouchableOpacity>
+
             </ImageBackground>
         </View>
     )

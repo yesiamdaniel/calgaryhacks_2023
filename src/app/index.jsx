@@ -7,6 +7,7 @@ import { useState } from "react";
 
 const Entry = () => {
     const loggedIn = true;
+
     const [fontsLoaded] = useFonts({
         DMBold: require('../assets/fonts/DMSans-Bold.ttf'),
         DMMedium: require('../assets/fonts/DMSans-Medium.ttf'),
@@ -24,10 +25,11 @@ const Entry = () => {
     return (
         <>
             {loggedIn === true ? (
+                <Redirect onLayoutRootView={onLayoutRootView} href='(tabs)/Home' />
                 <Redirect href='(tabs)/Profile' />
             ) : (
                 <Redirect href='landing/Login' />
-            )}  
+            )}
         </>
     );
 
