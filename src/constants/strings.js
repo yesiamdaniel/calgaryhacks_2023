@@ -3,7 +3,8 @@ const strings = {
     Explore: "Explore",
     Train: "Train",
     Market: "Market",
-    Profile: "Profile"
+    Profile: "Profile",
+    Path: "Path"
 }
 
 export default strings;
