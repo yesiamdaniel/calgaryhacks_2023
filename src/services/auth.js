@@ -1,5 +1,7 @@
 import { createUserWithEmailAndPassword, sendEmailVerification, signInWithEmailAndPassword } from "firebase/auth"
 import { auth } from "./config"
+import { setUserData } from "./userService"
+import userModel from "../models/user/user.model"
 
 export const signup = async (email, password) => {
     try {
@@ -9,6 +11,17 @@ export const signup = async (email, password) => {
         await emailVerification();
         const user = userCredential.user;
         console.log("User Registered:", user);
+        
+        // Define the user model inline
+        const newUser = {
+            name: '', // You might get this from a form input
+            createdAt: new Date(), // Use the current date/time as the creation timestamp
+            email: user.email, // Use the email from the registered user
+            stocks: [], // Initialize with an empty array of stocks
+            dollarsEarned: 0 // Initialize earnings as 0
+        };
+
+        await setUserData(user.uid, newUser)
         return user;
     } catch (error) {
         console.error("Registration Error: ", error)
