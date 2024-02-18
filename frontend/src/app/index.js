@@ -6,30 +6,25 @@ import PreviewCard from "../components/cards/PreviewCard";
 import Market from "../components/pages/Market";
 import { en, registerTranslation } from "react-native-paper-dates"
 
-const Home = () => {
+import { Provider } from 'react-redux';
+import { PersistGate } from 'redux-persist/integration/react';
+import { persistStore } from 'redux-persist';
+
+import { store, persistor } from "../redux/state/store";
+import PageContainer from "./PageContainer";
+import ModulePreviewCard from "../components/cards/ModulePreviewCard";
+
+const Root = () => {
     const router = useRouter();
-
     registerTranslation('en', en);
-    // to be passed from page to preview card
-    const mockPathTile = {
-        id: 123,
-        title: "Foundations of Financial Literacy",
-        description: "Description of learning some finance bullshit idk",
-        cashReward: 1500,
-        timeMinutes: 20, // could be a time object
-        timeHours: 0,
-        progress: 75 // this will be stored in the user object
-    };
-
     return (
-        <View style={styles.container}>
-
-            <View style={styles.main}>
-
-                <Market></Market>
-            </View>
-        </View>
+        <Provider store={store}>
+            <PersistGate loading={null} persistor={persistor}>
+                <PageContainer></PageContainer>
+            </PersistGate>
+        </Provider>
     );
+
 }
 
-export default Home;
+export default Root;
