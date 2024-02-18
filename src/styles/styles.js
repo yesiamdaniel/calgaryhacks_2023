@@ -112,8 +112,8 @@ const styles = StyleSheet.create({
     },
     pathCardTextBotRow: {
         flexDirection: 'row',
-        marginTop: 0,
-        marginBottom: 100,
+        marginTop: 10,
+        marginBottom: 55,
         flex: 1,
         alignItems: 'flex-start',
     },
