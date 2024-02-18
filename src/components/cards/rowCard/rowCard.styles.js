@@ -17,7 +17,7 @@ export default styles = StyleSheet.create({
         fontFamily: FONTS.DMRegular,
         fontSize: SIZES.ms
     },
-    imageContainer: {
+    rowContainer: {
         flex: 1,
         flexDirection: 'row',
         width: '100%',
@@ -25,10 +25,19 @@ export default styles = StyleSheet.create({
         gap: 16,
         alignItems: 'center',
     },
+    imageContainer: {
+        // width: 48,
+        // height: 48,
+        padding: 12,
+        backgroundColor: COLORS.white[50],
+        alignItems: 'center',
+        marginVertical: 'auto',
+        borderRadius: 16
+    },
     image: {
-        height: 52,
-        width: 52,
-        backgroundColor: COLORS.plum[900],
-        borderRadius: SIZES.m
+        height: 24,
+        width: 24,
+        borderRadius: SIZES.m,
+        alignItems: 'center',
     }
 });

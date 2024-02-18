@@ -6,8 +6,10 @@ import { Image } from 'react-native'
 const RowCard = ({ title, icon, color }) => {
     return (
         <View style={styles.container(color)}>
-            <View style={styles.imageContainer}>
-                <Image style={styles.image}/>
+            <View style={styles.rowContainer}>
+                <View style={styles.imageContainer}>
+                    <Image style={styles.image} source={icon}/> 
+                </View>
                 <Text style={styles.text}>{title}</Text>
             </View>
         </View>
