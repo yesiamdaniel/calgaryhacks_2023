@@ -6,6 +6,8 @@ import { Dropdown } from "react-native-element-dropdown";
 import dayjs from "dayjs";
 import { DatePickerModal, en } from "react-native-paper-dates";
 import { LineChart } from "react-native-chart-kit";
+import ManageStockModal from "./ManageStockModal";
+import PurchaseStockModal from "./PurchaseStockModal";
 
 
 const data = [
@@ -31,7 +33,9 @@ const Market = () => {
         datasets: [{ data: [] }],
       });
     const [open, setOpen] = useState(false);
-    const [selectedDateRange, setSelectedDateRange] = useState(getDefaultDateRange());   
+    const [selectedDateRange, setSelectedDateRange] = useState(getDefaultDateRange());
+    const [isManageModalVisible, setManageModalVisible] = useState(false);
+    const [isPurchaseModalVisible, setPurchaseModalVisible] = useState(false);
 
     const onDismiss = useCallback(() => {
      setOpen(false);
@@ -58,13 +62,11 @@ const Market = () => {
     };
 
     const changeMultiplier = (text) => {
-        console.log(text)
         setFilterData(prevData => ({ ...prevData, multiplier: text }));
     };
 
     const changeSelection = (item) => {
         setFilterData(prevData => ({ ...prevData, timespan: item.timespan}))
-        console.log(selectedDateRange)
     };
 
     const handleDateChange = (dates) => {
@@ -125,6 +127,15 @@ const Market = () => {
     return (
         <View>
             <View>
+                <Text>Current Balance</Text>
+                <Text>Unrealized Gains</Text>
+                <Button title="Manage Stocks" onPress={() => {setManageModalVisible(true)}}></Button>
+            </View>
+
+            <ManageStockModal isVisible={isManageModalVisible} setModalVisible={setManageModalVisible}></ManageStockModal>
+            <PurchaseStockModal isVisible={isPurchaseModalVisible} setModalVisible={setPurchaseModalVisible}/>
+
+            <View>
             <Text>Enter a stock ticker</Text>
             <TextInput style={styles.input} onChangeText={(params) => {changeStockTicker(params)}}></TextInput>
 
@@ -139,6 +150,7 @@ const Market = () => {
                 Pick range
             </Button>
             <DatePickerModal
+            locale="en"
             mode='range'
             visible={open}
             onDismiss={onDismiss}
@@ -182,6 +194,7 @@ const Market = () => {
                         borderRadius: 16
                     }}
                 />
+                <Button title="Buy Stock" onPress={() => {setPurchaseModalVisible(true)}}></Button>
             </View>
         ) : (
             <Text>No data available for the chart.</Text>
