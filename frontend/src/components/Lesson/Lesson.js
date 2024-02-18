@@ -16,6 +16,29 @@ const Lesson = (props) => {
     const router = useRouter();
 
     [currentView, setView] = useState("lesson");
+    [success, setSucces] = useState(undefined);
+    [answer1, set1] = useState(false);
+    [answer2, set2] = useState(false);
+    [answer3, set3] = useState(false);
+    [answer4, set4] = useState(false);
+
+    const tog1 = () => {
+        set1(!answer1);
+    }
+
+    const tog2 = () => {
+        set2(!answer2);
+    }
+
+    const tog3 = () => {
+        set3(!answer3);
+    }
+
+    const tog4 = () => {
+        set4(!answer4);
+    }
+
+
 
 
     const gotoQuiz = () => {
@@ -24,6 +47,13 @@ const Lesson = (props) => {
 
     const gotoLesson = () => {
         setView("lesson");
+    }
+
+    const submit = () => {
+        var succString = "";
+        
+
+
     }
 
 
@@ -40,13 +70,7 @@ const Lesson = (props) => {
 
 
     useEffect(() => {
-
-
-
-
-
-
-    });
+    }, [answer1, answer2, answer3, answer4]);
 
 
     const base = (   <SafeAreaView style={styles.SafeAreaView}>
@@ -136,27 +160,48 @@ const Lesson = (props) => {
         style={styles.buttonContainer} id="buttons">
         <Button 
         titleStyle={{color:"black"}}
-        color="#ffffff"
+        color={answer1 ? "#bbbbbb" : "#ffffff"}
         style={styles.answerButton} 
         title={props.info.answers[0]}
-        radius="15">
+        radius="15"
+        onPress={tog1}>
         </Button>
-        <Button color="#ffffff" 
+        <Button 
+        color={answer2 ? "#bbbbbb" : "#ffffff"}
         titleStyle={{color:"black"}}
         style={styles.answerButton} 
         title={props.info.answers[1]}
-        radius="15">
+        radius="15"
+        onPress={tog2}>
         </Button>
-        <Button color="#ffffff" 
+        <Button 
+        color={answer3 ? "#bbbbbb" : "#ffffff"}
         titleStyle={{color:"black"}}
         style={styles.answerButton} 
         title={props.info.answers[2]}
-        radius="15">
+        radius="15"
+        onPress={tog3}>
         </Button>
-        <Button color="#ffffff" 
+        <Button 
+        color={answer4 ? "#bbbbbb" : "#ffffff"}
         titleStyle={{color:"black"}}
         style={styles.answerButton} 
         title={props.info.answers[3]}
+        radius="15"
+        onPress={tog4}>
+        </Button>
+
+
+        <Button color="#ffffff" 
+        titleStyle={{color:"black"}}
+        style={        {padding:5,
+            radius:10,
+            shadowColor: '#171717',
+            shadowOffset: {width: -2, height: 4},
+            shadowOpacity: 0.3,
+            shadowRadius: 3, width:"50%", marginBottom:40}}
+        title={"Submit"}
+        onPress={submit}
         radius="15">
         </Button>
 
@@ -293,18 +338,28 @@ const styles = StyleSheet.create({
         shadowOffset: {width: -2, height: 4},
         shadowOpacity: 0.3,
         shadowRadius: 3,
+        width:200
     },
     buttonContainer: {
-        alignContent:"center",
         flex:1,
         flexDirection:"column",
         gap:15,
-        marginTop:50   
+        marginTop:50,
+        alignItems:"center"   
     },
     contentBox: {
         backgroundColor:"#ffffff",
         width:"80%",
         borderRadius:20
+    },
+    buttonSelected: {
+        padding:5,
+        radius:10,
+        shadowColor: '#555555',
+        shadowOffset: {width: -2, height: 4},
+        shadowOpacity: 0.3,
+        shadowRadius: 3,
+        width:200
     }
     
 
