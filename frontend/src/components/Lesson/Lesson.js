@@ -6,6 +6,7 @@ import  { initializeApp} from 'firebase/app';
 import { useRouter } from "expo-router";
 import  { getFirestore, collection, query, where, getDocs, setDoc, doc, updateDoc } from 'firebase/firestore';
 import { firebaseConfig, app, db } from "../../constants/firebase";
+import { desKey } from "../../constants/userKeys";
 
 
 
@@ -21,6 +22,10 @@ const Lesson = (props) => {
     [answer2, set2] = useState(false);
     [answer3, set3] = useState(false);
     [answer4, set4] = useState(false);
+    [pastBalance, setPastBal] = useState(0);
+    [currBalanace, setCurrBal] = useState(0);
+    [profile, setProfile] = useState({});
+    [passFail, setPassFail] = useState(false);
 
     const tog1 = () => {
         set1(!answer1);
@@ -41,6 +46,7 @@ const Lesson = (props) => {
 
 
 
+
     const gotoQuiz = () => {
         setView("quiz");
     }
@@ -49,9 +55,35 @@ const Lesson = (props) => {
         setView("lesson");
     }
 
+    const gotoAward = () => {
+        setView("award");
+    }
+
     const submit = () => {
         var succString = "";
-        
+        var profile = {};
+
+
+        answer1 ? succString += "1" : succString += "0";
+        answer2 ? succString += "1" : succString += "0";
+        answer3 ? succString += "1" : succString += "0";
+        answer4 ? succString += "1" : succString += "0";
+
+        setPassFail(succString === props.info.correct);
+
+        // assume one unique key
+        if (succString === props.info.correct) {
+            const q = query(collection(db, "Users"), where("id", "==", desKey));
+            const doc = q.getDocs(q).then((docs) => {
+                docs.forEach(profile = docs.data());
+            });
+
+
+
+        }
+
+
+
 
 
     }
@@ -68,9 +100,43 @@ const Lesson = (props) => {
     }
 
 
+    const getProfile = () => {
+        var prof = {};
+        const q = query(collection(db, "Users"), where("id", "==", desKey));
+        const doc = getDocs(q).then((docs) => {
+            docs.forEach(prof = docs.data());
+        });
+        setProfile(prof);
+    }
+
+
+    const updateProfile = () => {
+        var currProfile = profile;
+
+        if (passFail) {
+            currentProfile["dollarsEarned"] = currProfile["dollarsEarned"] + props.info.reward;
+            const upload = setDoc(doc(db, "users", desKey), {
+                currentProfile
+              }
+              ).then(alert("Upload Success")); 
+        }
+        else {
+            alert("No pussy")
+        }
+
+    }
 
     useEffect(() => {
-    }, [answer1, answer2, answer3, answer4]);
+
+        if (!passFail) {
+            getProfile();
+        }
+        else {
+            updateProfile();
+        }
+    }, [,profile, answer1, answer2, answer3, answer4])
+       
+    
 
 
     const base = (   <SafeAreaView style={styles.SafeAreaView}>
