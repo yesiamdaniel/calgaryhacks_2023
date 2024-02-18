@@ -42,7 +42,7 @@ const styles = StyleSheet.create({
         flexDirection: 'column',
         justifyContent: 'space-between',
         alignContent: 'space-between',
-        height: 150,
+        height: 160,
         padding: 10,
         // backgroundColor: 'red'
     },
@@ -51,7 +51,8 @@ const styles = StyleSheet.create({
         justifyContent: 'space-between'
     },
     cardTextMidRow: {
-        flexDirection: 'col'
+        flexDirection: 'col',
+        justifyContent: 'center',
     },
     cardTextBotRow: {
         flexDirection: 'row',
@@ -60,6 +61,17 @@ const styles = StyleSheet.create({
     },
     input: {
         color: "#38434D"
+    },
+
+    // Utilities
+
+    progressBar: {
+        margin: 5,
+        color: "green",
+        borderRadius: 10,
+    },
+    progressBarContainer: {
+        paddingRight: 7
     }
 });
 
