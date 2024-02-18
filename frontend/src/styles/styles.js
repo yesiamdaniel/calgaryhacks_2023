@@ -22,7 +22,13 @@ const styles = StyleSheet.create({
     },
     input: {
         color: "#38434D"
-    }
+    }, 
+    navbar : {
+        flexDirection: "row",
+        alignItems: "flex-end",
+        justifyContent: "space-between",
+        width: "100%", // take full width of the screen
+    },
 });
 
 export default styles;
