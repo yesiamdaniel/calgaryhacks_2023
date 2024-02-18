@@ -280,14 +280,14 @@ const styles = StyleSheet.create({
         justifyContent: "space-between",
         width: "100%", // take full width of the screen
     },
-    imageOverlay: {
+    imageOverlay: (showDetails) => ({
         height: '100%',
         width: '100%',
         position: "absolute",
         backgroundColor: 'black',
-        opacity: 0.5,
+        opacity: !showDetails ? 0.1 : 0.5,
         borderRadius: SIZES.s
-    }
+    })
 });
 
 export default styles;

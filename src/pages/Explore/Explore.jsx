@@ -11,7 +11,7 @@ import { preview } from '../../constants/data/categories';
 import { useRouter } from 'expo-router';
 
 const Explore = () => {
-
+  const router = useRouter();
   const [searchTerm, setSearchTerm] = useState('');
 
   const handleSearch = () => {
@@ -19,7 +19,7 @@ const Explore = () => {
   }
 
   const handleModuleClick = () => {
-    router.push('/Lesson')
+    router.push('/Path')
   }
 
   return (
@@ -36,7 +36,10 @@ const Explore = () => {
           style={styles.horizontalList}
           horizontal
           data={preview}
-          renderItem={({ item }) => <View style={styles.horizontalCardContainer}><PreviewCard preview={item} /></View>}
+          renderItem={({ item }) =>
+            <View style={styles.horizontalCardContainer}>
+              <PreviewCard onClick={handleModuleClick} preview={item} />
+            </View>}
           keyExtractor={(item) => item.id}
         />
       </View>

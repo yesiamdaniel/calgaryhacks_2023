@@ -18,6 +18,7 @@ const Path = () => {
                 source={{ uri: preview[0].imageURL }}
                 resizeMode='cover'
                 imageStyle={styles.card}>
+                <View style={styles.imageOverlay(true)}></View>
                 <TouchableOpacity style={styles.pathCardTextContainer}>
                     <View style={styles.cardTextMidRow}>
                         <Text style={styles.cardText}>{preview[0].timeMinutes} minutes</Text>
