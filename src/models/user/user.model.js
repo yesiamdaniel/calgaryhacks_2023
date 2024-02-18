@@ -9,5 +9,4 @@ const userModel = {
     dollarsEarned: 0
 };
 
-
 export default {userModel};
