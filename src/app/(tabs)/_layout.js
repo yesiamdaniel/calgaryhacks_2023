@@ -14,23 +14,8 @@ const _layout = () => {
         <SafeAreaView style={styles.container}>
             <Provider store={store}>
                 <PersistGate loading={null} persistor={persistor}>
-                    <Tabs screenOptions={{
-                        headerShown: false,
-                        tabBarStyle: { ...styles.tabBar },
-                    }}>
-                        <Tabs.Screen
-                            name="Home"
-                            options={{
-                                tabBarLabel: "Home",
-                            }}
-                        />
-                        <Tabs.Screen
-                            name="Explore"
-                            options={{
-                                tabBarLabel: "Explore",
-                            }}
-                        />
-                    </Tabs>
+               
+
                 </PersistGate>
             </Provider>
         </SafeAreaView>

@@ -7,23 +7,28 @@ import { useRouter } from "expo-router";
 import  { getFirestore, collection, query, where, getDocs, setDoc, doc, updateDoc, FieldValue, increment } from 'firebase/firestore';
 import { firebaseConfig, app, db } from "../../constants/firebase";
 import { desKey } from "../../constants/userKeys";
-
+import { Redirect } from "expo-router";
 
 
 
 const LessonComplete = (props) => {
     const router = useRouter();
 
+    const routeHome = () => {
+        router.push("(tabs)/Learn")
+    }
+    
+
     return(     
     <View style={styles.container}>
         <View style={styles.completeHeader}>
             <Text h3Style={styles.headerText} h3>
-                LESSON COMPLETED!
+                {props.result === "failed" ? "TRY AGAIN" : "LESSON COMPLETED!"}
             </Text>
         </View>
-        <View style={{height:"50%"}}></View>
+        <View style={{height:"40%"}}></View>
         <View>
-            <View style={styles.rewardBoxHeader}>
+            {props.result === "failed" ? <View></View> : <View><View style={styles.rewardBoxHeader}>
                 <Text h1>
                     REWARDS
                 </Text>
@@ -31,15 +36,16 @@ const LessonComplete = (props) => {
             </View>
             <View style={styles.rewardBoxBody}>
             <Text h2 style={{color:"green"}}>
-                    $
+                    ${props.info.reward}
                 </Text>
-            </View>
+            </View></View>}
 
         </View>
 
         <Button title="Continue" color="#11bbff"
         style={styles.continueButton}
         radius="15"
+        onPress={routeHome}
         >
         </Button>
 
@@ -58,6 +64,7 @@ const styles = StyleSheet.create({
         paddingTop: 24,
         backgroundColor: "#ffffff",
         width: Dimensions.get('window').width,
+        height: Dimensions.get('window').height,
         alignItems:"center"
 
     },
@@ -66,7 +73,7 @@ const styles = StyleSheet.create({
         alignItems:"center",
         marginTop:"10px",
         maxWidth: 960,
-    
+        height: Dimensions.get('window').height,
         width: Dimensions.get('window').width
     },
     completeHeader: {
@@ -75,7 +82,7 @@ const styles = StyleSheet.create({
         width:"90%"
     },
     headerText: {
-        textAlign:"center"
+        textAlign:"center",
     },
     rewardBoxHeader: {
         borderColor:"black",
