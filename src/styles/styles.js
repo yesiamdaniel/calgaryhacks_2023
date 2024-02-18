@@ -29,14 +29,13 @@ const styles = StyleSheet.create({
     },
     card: {
         borderRadius: 10,
-        backgroundColor: 'green',
     },
     cardText: {
         color: 'white',
     },
     cardTextMoney: {
         color: 'green',
-        fontStyle: 'bold',
+        fontFamily: FONTS.DMBold,
         fontSize: 18
     },
     cardTextTitle: {
@@ -168,6 +167,85 @@ const styles = StyleSheet.create({
     },
     progressBarTextTitle: {
         fontFamily: FONTS.DMMedium,
+    },
+
+    /**
+     * =============================
+     * Home Page
+     * =============================
+     */
+    homePage: {
+        height: 660,
+        width: '100%'
+    },
+    homeContainer: {
+        height: 660,
+        justifyContent: 'flex-start',
+        alignItems: 'flex-start'
+    },
+    homePickUpContainer: {
+        height: 250,
+    },
+    homePickUpTitle: {
+        fontSize: 26,
+        marginBottom: 10,
+        marginLeft: 15,
+        fontFamily: FONTS.DMMedium
+    },
+    homePageTitle: {
+        fontFamily: FONTS.DMBold,
+        fontSize: 40,
+        marginBottom: 60,
+        marginLeft: 15,
+        marginTop: 30
+    },
+    homePickUpProgressContainer: {
+        height: 'auto',
+        margin: 10,
+        borderRadius: 10,
+        objectFit: 'contain',
+        maxWidth: '100%',
+        resizeMode: 'cover'
+    },
+    homePickUpImageContainer: {
+        height: 'auto',
+        margin: 10,
+        borderRadius: 10,
+        objectFit: 'contain',
+        maxWidth: '100%',
+        resizeMode: 'cover'
+    },
+    homePickUpImage: {
+        height: 250,
+        margin: 10,
+        borderRadius: 10,
+        width: 'auto',
+        maxWidth: '100%',
+        overflow: 'hidden',
+        resizeMode: 'cover'
+    },
+    homeProgressImage: {
+        height: 90,
+        margin: 10,
+        borderRadius: 10,
+        maxWidth: '100%',
+        overflow: 'hidden',
+        resizeMode: 'cover'
+    },
+    homeProgressContainer: {
+        height: 300,
+        borderRadius: 10,
+        height: 'auto',
+        overflow: 'hidden',
+        resizeMode: 'cover',
+    },
+    homePortfolioContainer: {
+        height: 300,
+        borderRadius: 10,
+        marginTop: 25,
+        height: 'auto',
+        overflow: 'hidden',
+        resizeMode: 'cover',
     },
 
     /**

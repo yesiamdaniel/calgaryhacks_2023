@@ -2,7 +2,7 @@ import { Redirect } from "expo-router";
 import React from "react";
 import styles from "../../styles/styles";
 import { View, TouchableOpacity, Text, Image, ImageBackground, Button } from "react-native";
-import ProgressBarContainer from "../utilites/ProgressBarContainer";
+import ProgressBarContainer from "../utilities/ProgressBarContainer";
 
 const PreviewCard = ({ preview }) => {
     return (
