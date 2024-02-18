@@ -144,8 +144,6 @@ const Market = () => {
                 <Button title="Manage Stocks" onPress={() => {setManageModalVisible(true)}}></Button>
             </View>
 
-            <ManageStockModal isVisible={isManageModalVisible} setModalVisible={setManageModalVisible}></ManageStockModal>
-            <PurchaseStockModal stockTicker={filterData.stocksTicker} stockData={chartData} isVisible={isPurchaseModalVisible} setModalVisible={setPurchaseModalVisible}/>
 
             <View style={styles.inputContainer}>
             <Text style={styles.label}>Enter a stock ticker</Text>
@@ -185,33 +183,19 @@ const Market = () => {
                     width={Dimensions.get('window').width - 16}
                     height={220}
                     yAxisLabel="$"
-                    chartConfig={{
-                        backgroundColor: '#e26a00',
-                        backgroundGradientFrom: '#fb8c00',
-                        backgroundGradientTo: '#ffa726',
-                        decimalPlaces: 2,
-                        color: (opacity = 1) => `rgba(255, 255, 255, ${opacity})`,
-                        labelColor: (opacity = 1) => `rgba(255, 255, 255, ${opacity})`,
-                        style: {
-                            borderRadius: 16
-                        },
-                        propsForDots: {
-                            r: '6',
-                            strokeWidth: '2',
-                            stroke: '#ffa726'
-                        }
-                    }}
+                    
+                    chartConfig={styles.chartConfig}
                     bezier
-                    style={{
-                        marginVertical: 8,
-                        borderRadius: 16
-                    }}
+                    style={styles.chart}
                 />
                 <Button title="Buy Stock" onPress={() => {setPurchaseModalVisible(true)}}></Button>
             </View>
         ) : (
             <Text style={styles.noDataText}>No data available for the chart.</Text>
         )}
+            <ManageStockModal isVisible={isManageModalVisible} setModalVisible={setManageModalVisible}></ManageStockModal>
+            <PurchaseStockModal stockTicker={filterData.stocksTicker} stockData={chartData} isVisible={isPurchaseModalVisible} setModalVisible={setPurchaseModalVisible}/>
+
         </View>
     );
 }
@@ -219,10 +203,9 @@ const Market = () => {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        padding: 20,
+        
     },
     balanceContainer: {
-        marginBottom: 20,
     },
     balanceText: {
         fontSize: 18,
@@ -230,10 +213,8 @@ const styles = StyleSheet.create({
     },
     gainsText: {
         fontSize: 16,
-        marginVertical: 8,
     },
     inputContainer: {
-        marginBottom: 20,
     },
     label: {
         fontSize: 16,
@@ -244,7 +225,6 @@ const styles = StyleSheet.create({
         borderColor: '#ccc',
         borderRadius: 5,
         padding: 10,
-        marginBottom: 10,
     },
     dropdown: {
         borderWidth: 1,
@@ -254,7 +234,6 @@ const styles = StyleSheet.create({
         marginBottom: 10,
     },
     chartContainer: {
-        alignItems: 'center',
     },
     chartTitle: {
         fontSize: 20,
@@ -267,10 +246,6 @@ const styles = StyleSheet.create({
         fontWeight: '200',
         textAlign: 'center',
         marginBottom: 10,
-    },
-    chart: {
-        marginVertical: 8,
-        borderRadius: 16,
     },
     noDataText: {
         textAlign: 'center',
