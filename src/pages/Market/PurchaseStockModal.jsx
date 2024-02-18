@@ -3,8 +3,10 @@ import styles from "../../styles/styles"
 import { Button, Text } from "@rneui/base";
 
 
-const PurchaseStockModal = ({ isVisible, onClose, stockData, setModalVisible }) => {
+const PurchaseStockModal = ({ isVisible, stockData, setModalVisible }) => {
 
+    
+    
     return (
         <View>
             <Modal visible={isVisible}>

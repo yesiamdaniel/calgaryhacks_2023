@@ -8,6 +8,7 @@ import { DatePickerModal, en } from "react-native-paper-dates";
 import { LineChart } from "react-native-chart-kit";
 import ManageStockModal from "./ManageStockModal";
 import PurchaseStockModal from "./PurchaseStockModal";
+import { getUserData } from "../../services/userService";
 
 
 const data = [
@@ -36,6 +37,18 @@ const Market = () => {
     const [selectedDateRange, setSelectedDateRange] = useState(getDefaultDateRange());
     const [isManageModalVisible, setManageModalVisible] = useState(false);
     const [isPurchaseModalVisible, setPurchaseModalVisible] = useState(false);
+    const [userData, setUserData] = useState(null);
+
+    useEffect(() => {
+        const fetchUserData = async () => {
+            const data = await getUserData(); // Assuming this function returns the user data
+            console.log("Test");
+            console.log(data);
+            setUserData(data); // Update state with the fetched user data
+        };
+        
+        fetchUserData();
+    }, [])
 
     const onDismiss = useCallback(() => {
      setOpen(false);
@@ -127,13 +140,13 @@ const Market = () => {
     return (
         <View>
             <View>
-                <Text>Current Balance</Text>
+                <Text>Current Balance: {userData ? userData.dollarsEarned : 'Loading...'}</Text>
                 <Text>Unrealized Gains</Text>
                 <Button title="Manage Stocks" onPress={() => {setManageModalVisible(true)}}></Button>
             </View>
 
             <ManageStockModal isVisible={isManageModalVisible} setModalVisible={setManageModalVisible}></ManageStockModal>
-            <PurchaseStockModal isVisible={isPurchaseModalVisible} setModalVisible={setPurchaseModalVisible}/>
+            <PurchaseStockModal stockData={chartData} isVisible={isPurchaseModalVisible} setModalVisible={setPurchaseModalVisible}/>
 
             <View>
             <Text>Enter a stock ticker</Text>
