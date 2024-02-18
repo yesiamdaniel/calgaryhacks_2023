@@ -88,10 +88,17 @@ const Lesson = (props) => {
           
 
 
-    
+    <View style={{backgroundColor:"#ffffff", borderRadius:10,         shadowColor: '#171717',
+        shadowOffset: {width: -2, height: 4},
+        shadowOpacity: 0.3,
+        shadowRadius: 8,
+        alignItems:"center",
+        justifyContent:"center"}
+}>
       <Text h3Style={styles.contentText} h3 adjustsFontSizeToFit={true}>
           {props.info.question}
           </Text>
+          </View>
 
 
         <View 
@@ -219,20 +226,21 @@ const styles = StyleSheet.create({
         width:"80%",
         alignSelf:"flex-start",
         fontSize:20,
-        backgroundColor:"white",
         textAlign:"center",
         shadowColor: '#171717',
         shadowOffset: {width: -2, height: 4},
         shadowOpacity: 0.3,
-        shadowRadius: 3,
-        borderRadius:10,
+        shadowRadius: 8,
         height:60,
+        overflow:"hidden"
     },
     scrollView : {
-        marginHorizontal:0
+        marginHorizontal:0,
+        height: Dimensions.get('window').height
     },
     SafeAreaView: {
-        width: Dimensions.get('window').width
+        width: Dimensions.get('window').width,
+        height: Dimensions.get('window').height
     },
     answerButton:{
         padding:5,
