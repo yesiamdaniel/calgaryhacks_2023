@@ -2,13 +2,13 @@ import { View, Text, TextInput } from "react-native";
 import styles from "../../styles/styles";
 import { useState } from "react";
 import { Button } from "@rneui/base";
-import { login, signup } from "../../../../backend/services/auth";
+import { login, signup } from "../../services/auth";
 
 const Login = () => {
 
     const [email, onChangeEmail] = useState('');
     const [password, onChangePassword] = useState('');
-    
+
     const handleLogin = async () => {
         try {
             await login(email, password)

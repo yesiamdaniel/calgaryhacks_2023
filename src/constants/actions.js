@@ -3,6 +3,6 @@ export const PAGES = {
     HOME: 'HOME',
     EXPLORE: 'EXPLORE',
     LEARN: 'LEARN',
-    MARKET: 'MARKET',
+    PROGRESS: 'PROGRESS',
     PROFILE: 'PROFILE',
 }

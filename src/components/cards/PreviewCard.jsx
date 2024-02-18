@@ -2,22 +2,20 @@ import { Redirect } from "expo-router";
 import React from "react";
 import styles from "../../styles/styles";
 import { View, TouchableOpacity, Text, Image, ImageBackground, Button } from "react-native";
-import ProgressBarContainer from "../utilites/ProgressBarContainer";
 
 const PreviewCard = ({ preview }) => {
+    const image = { uri: 'https://legacy.reactjs.org/logo-og.png' };
+
     return (
-        <View style={styles.cardContainer}>
+        <View>
             <ImageBackground
-                source={{ uri: preview.imageURL }}
+                source={image}
                 resizeMode='cover'
                 imageStyle={styles.card}>
                 <TouchableOpacity style={styles.cardTextContainer}>
                     <View style={styles.cardTextTopRow}>
                         <Text style={styles.cardText}>{preview.timeMinutes} minutes</Text>
-                        <View>
-                            <Text style={styles.cardText}>Progression</Text>
-                            <ProgressBarContainer progress={preview.progress}></ProgressBarContainer>
-                        </View>
+                        <Text style={styles.cardText}>Progression</Text>
                     </View>
 
                     <View style={styles.cardTextMidRow}>
@@ -26,7 +24,7 @@ const PreviewCard = ({ preview }) => {
                     </View>
 
                     <View style={styles.cardTextBotRow}>
-                        <Text style={styles.cardTextMoney}>${preview.cashReward}</Text>
+                        <Text style={styles.cardText}>{preview.cashReward}</Text>
                         <Text style={styles.cardText}>Click to get started</Text>
                     </View>
 

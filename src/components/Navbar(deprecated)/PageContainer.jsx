@@ -1,17 +1,17 @@
 import { View, Text } from 'react-native'
 import { useEffect } from 'react';
 import { useSelector } from "react-redux";
-import { selectCurrentPage } from '../redux/slice/pageSlice';
-import { PAGES } from '../constants/actions';
-import { setPage } from '../redux/slice/pageSlice';
+import { selectCurrentPage } from '../../redux/slice/pageSlice';
+import { PAGES } from '../../constants/actions';
+import { setPage } from '../../redux/slice/pageSlice';
 
-import Navbar from '../components/Navbar/Navbar';
-import Home from '../pages/Home/Home';
-import Explore from '../pages/Explore/Explore';
-import Learn from '../pages/Learn/Learn';
-import Market from '../pages/Market/Market';
-import Profile from '../pages/Profile/Profile';
-import Error from '../pages/Error/Error';
+import Navbar from './Navbar';
+import Home from '../../pages/Home/Home';
+import Explore from '../../pages/Explore/Explore';
+import Learn from '../../pages/Learn/Learn';
+import Progress from '../pages/Progress/Progress';
+import Profile from '../../pages/Profile/Profile';
+import Error from '../../pages/Error/Error';
 
 const PageContainer = () => {
   const currentPage = useSelector(selectCurrentPage);
@@ -40,9 +40,9 @@ const PageContainer = () => {
           <Learn />
           <Navbar />
         </>
-      ) : currentPage === PAGES.MARKET ? (
+      ) : currentPage === PAGES.PROGRESS ? (
         <>
-          <Market  />
+          <Progress />
           <Navbar />
         </>
       ) : currentPage === PAGES.PROFILE ? (
