@@ -15,69 +15,7 @@ import { firebaseConfig, app, db } from "../constants/firebase";
 const Home = () => {
     const router = useRouter();
 
-    const [path1Data, setPath1Data] = useState(undefined);
-    const [module1Data, setModule1Data] = useState(undefined);
-    const [lessonsData, setLessonsData] = useState([{
-        name:""
-    }]);
-   
-
-    const path1_data = () => {
-            const q = query(collection(db, "Path1/"), where("id", "==", 0));
-            const docs = getDocs(q).then((docs) => {  
-            docs.forEach((x) => {
-                setPath1Data(x.data());
-                
-            })             
-    });
-}
-
-    const module1_data = () => {
-        const q = query(collection(db, "Path1/Path1/Module1.1"), where("id", "==", 0));
-
-        const docs = getDocs(q).then((docs) => {  
-
-        docs.forEach((x) => {
-                setModule1Data(x.data());
-            })             
-        });
-
-    }
-
-    const lessons_data = () => {
-        const q = query(collection(db, "Path1/Path1/Module1.1"), where("id", ">", 0));
-
-        const docs = getDocs(q).then((docs) => {  
-
-        const arr = [];
-
-        docs.forEach((x) => {
-            if (lessonsData[0].name === "") {
-                setLessonsData([x.data()]);
-            }
-            else {
-                setLessonsData(old => [...old, x.data()]);  
-            }
-
-            })             
-        });
-    
-    }
-    
-
-
-    useEffect(() => {
-        if (path1Data == undefined) {
-            path1_data();
-        }
-        if (module1Data == undefined) {
-            module1_data();
-        }
-        if (lessonsData[0].name === "") {
-            lessons_data();
-        }
-    }, [, lessonsData]); 
-
+  
     
 
 
@@ -85,7 +23,7 @@ const Home = () => {
 
         <View style={styles.container}>
         
-        <LessonComplete>
+     <LessonComplete>
 
         </LessonComplete>
 
