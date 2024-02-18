@@ -6,7 +6,8 @@ import { en, registerTranslation } from "react-native-paper-dates";
 import { useState } from "react";
 
 const Entry = () => {
-    const loggedIn = false;
+    const loggedIn = true;
+
     const [fontsLoaded] = useFonts({
         DMBold: require('../assets/fonts/DMSans-Bold.ttf'),
         DMMedium: require('../assets/fonts/DMSans-Medium.ttf'),
@@ -24,10 +25,10 @@ const Entry = () => {
     return (
         <>
             {loggedIn === true ? (
-                <Redirect href='(tabs)/Home' />
+                <Redirect onLayoutRootView={onLayoutRootView} href='(tabs)/Home' />
             ) : (
                 <Redirect href='landing/Login' />
-            )}  
+            )}
         </>
     );
 
