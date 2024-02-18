@@ -2,13 +2,19 @@ import { View, Text, SafeAreaView, ScrollView, FlatList, ImageBackground, Toucha
 import ModulePreviewCard from '../../components/cards/ModulePreviewCard';
 import styles from '../../styles/styles';
 import { preview } from '../../constants/data/categories';
+import { useRouter } from 'expo-router';
 
 const Path = () => {
+    const router = useRouter();
+
+    const navToLesson = () => {
+        router.push('/Module');
+    }
 
     const renderItem = ({ item }) => {
         console.log(item.id);
         return (
-            <ModulePreviewCard preview={item} />
+            <ModulePreviewCard onPress={navToLesson} preview={item} />
         );
     };
 

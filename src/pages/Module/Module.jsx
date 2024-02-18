@@ -33,8 +33,8 @@ const Module = () => {
 
     const [searchTerm, setSearchTerm] = useState('');
 
-    const handleSearch = () => {
-
+    const navToLesson = () => {
+        router.push('/Lesson');
     }
 
     const handleModuleClick = () => {
@@ -55,7 +55,7 @@ const Module = () => {
                     data={categories}
                     renderItem={({ item }) =>
                         <View style={styles.verticalCardContainer}>
-                            <RowCard title={item.title} icon={item.icon} color={item.color} />
+                            <RowCard onPress={navToLesson} title={item.title} icon={item.icon} color={item.color} />
                         </View>}
                     keyExtractor={(item) => item.title}
                 />
