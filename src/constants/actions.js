@@ -5,4 +5,5 @@ export const PAGES = {
     LEARN: 'LEARN',
     PROGRESS: 'PROGRESS',
     PROFILE: 'PROFILE',
+    PATH: 'PATH'
 }

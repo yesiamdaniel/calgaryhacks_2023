@@ -10,8 +10,9 @@ import Home from '../../pages/Home/Home';
 import Explore from '../../pages/Explore/Explore';
 import Learn from '../../pages/Learn/Learn';
 import Progress from '../pages/Progress/Progress';
-import Profile from '../../pages/Profile/Profile';
-import Error from '../../pages/Error/Error';
+import Profile from '../pages/Profile/Profile';
+import Path from '../pages/Path/Path';
+import Error from '../pages/Error/Error';
 
 const PageContainer = () => {
   const currentPage = useSelector(selectCurrentPage);
@@ -48,6 +49,11 @@ const PageContainer = () => {
       ) : currentPage === PAGES.PROFILE ? (
         <>
           <Profile />
+          <Navbar />
+        </>
+      ) : currentPage === PAGES.PATH ? (
+        <>
+          <Path />
           <Navbar />
         </>
       ) : (
