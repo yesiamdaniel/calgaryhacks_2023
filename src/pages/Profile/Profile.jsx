@@ -1,3 +1,4 @@
+
 import { Text, ImageBackground,  Touchable, View, StyleSheet, Dimensions, ScrollView, SafeAreaView, FlatList, Image} from "react-native";
 import { SearchBar } from "@rneui/themed"
 import { useState, useEffect } from "react";
@@ -18,6 +19,7 @@ const Profile = () => {
 
         <ScrollView style={styles.scrollView}>
         <View>
+
             <View style={styles.container}>
                 <View style={styles.header}>
 
@@ -60,6 +62,7 @@ const Profile = () => {
                 </View>
                 </View>
             </View>
+
         </View>
         </ScrollView>
         </SafeAreaView>

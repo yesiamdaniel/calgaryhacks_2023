@@ -1,4 +1,4 @@
-import { doc, getDoc, setDoc } from "firebase/firestore";
+import { arrayUnion, doc, getDoc, setDoc, updateDoc } from "firebase/firestore";
 import { auth, db } from "./config";
 
 const getUserData = async () => {
@@ -28,4 +28,11 @@ const setUserData = async (userData) => {
     }
 };
 
-export {getUserData, setUserData}
+const updateUserStocks = async (newStock) => {
+    const userRef = doc(db, "users", auth.currentUser.uid);
+    await updateDoc(userRef, {
+        stocks: arrayUnion(newStock)
+    });
+}
+
+export {getUserData, setUserData, updateUserStocks}
