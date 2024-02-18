@@ -8,12 +8,13 @@ import { useRouter } from "expo-router";
 import  { getFirestore, collection, query, where, getDocs, setDoc, doc, updateDoc, FieldValue, increment } from 'firebase/firestore';
 import { firebaseConfig, app, db } from "../../constants/firebase";
 import { desKey } from "../../constants/userKeys";
+import { logOut } from "../../services/auth";
 
 
 
 const Profile = () => {
 
-
+    const router = useRouter();
     return (
         <SafeAreaView style={styles.SafeAreaView}>
 
@@ -60,6 +61,10 @@ const Profile = () => {
 
 
                 </View>
+                <Button title="Logout" onPress={() => {
+                    logOut();
+                    router.navigate("landing/Login")
+                }} style={{alignSelf:"stretch"}}></Button>
                 </View>
             </View>
 
@@ -96,7 +101,7 @@ const styles =  StyleSheet.create({
     },
     h1: {
         fontSize:42,
-        color:"#67949ff"
+        color:"#6949ff"
     },
     h2: {
         color:"grey"

@@ -4,14 +4,14 @@ import styles from "../../styles/styles";
 import { View, TouchableOpacity, Text, Image, ImageBackground, Button } from "react-native";
 import ProgressBarContainer from "../utilities/ProgressBarContainer";
 
-const ModulePreviewCard = ({ preview }) => {
+const ModulePreviewCard = ({ onPress, preview }) => {
     return (
         <View style={styles.moduleCardContainer}>
             <ImageBackground
                 source={{ uri: preview.imageURL }}
                 resizeMode='cover'
                 imageStyle={styles.card}>
-                <TouchableOpacity style={styles.moduleCardTextContainer}>
+                <TouchableOpacity onPress={onPress} style={styles.moduleCardTextContainer}>
                     <View style={styles.cardTextTopRow}>
                         <Text style={styles.cardTextTitle}>Module</Text>
                     </View>

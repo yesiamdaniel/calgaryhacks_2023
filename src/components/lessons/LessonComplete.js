@@ -15,7 +15,7 @@ const LessonComplete = (props) => {
     const router = useRouter();
 
     const routeHome = () => {
-        router.push("(tabs)/Learn")
+        router.push("(tabs)/Explore")
     }
     
 

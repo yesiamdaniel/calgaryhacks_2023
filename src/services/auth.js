@@ -1,4 +1,4 @@
-import { createUserWithEmailAndPassword, sendEmailVerification, signInWithEmailAndPassword } from "firebase/auth"
+import { createUserWithEmailAndPassword, sendEmailVerification, signInWithEmailAndPassword, signOut } from "firebase/auth"
 import { auth } from "./config"
 import { setUserData } from "./userService"
 import userModel from "../models/user/user.model"
@@ -6,7 +6,6 @@ import userModel from "../models/user/user.model"
 export const signup = async (email, password) => {
     try {
         console.log("Auth.signup")
-        console.log(email, "", password)
         const userCredential = await createUserWithEmailAndPassword(auth, email, password)
         await emailVerification();
         const user = userCredential.user;
@@ -40,6 +39,14 @@ export const login = async (email, password) => {
         console.error("Login Error: ", error)
     }
 
+}
+
+export const logOut = async () => {
+    try {
+        await signOut(auth);
+    } catch (error) {
+        console.error("Logout Error: ", error)
+    }
 }
 
 export const emailVerification = async () => {

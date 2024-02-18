@@ -7,32 +7,19 @@ import Header from '../../components/layout/Header/Header';
 import Search from '../../components/layout/Search/Search';
 import RowCard from '../../components/cards/rowCard/RowCard';
 import { categories } from '../../constants/data/categories';
+import { preview } from '../../constants/data/categories';
+import { useRouter } from 'expo-router';
 
 const Explore = () => {
-  const path = [{
-    id: 789,
-    title: "Foundations of Financial Literacy",
-    description: "Description of learning some finance bullshit idk",
-    cashReward: 1500,
-    timeMinutes: 20, // could be a time object
-    timeHours: 0,
-    progress: 0.75, // this will be stored in the user object
-    imageURL: 'https://emeritus.org/in/wp-content/uploads/sites/3/2022/03/What-is-Financial-Management.jpg.optimal.jpg'
-  }, {
-    id: 783,
-    title: "Foundations of Financial Literacy",
-    description: "Description of learning some finance bullshit idk",
-    cashReward: 1500,
-    timeMinutes: 20, // could be a time object
-    timeHours: 0,
-    progress: 0.75, // this will be stored in the user object
-    imageURL: 'https://emeritus.org/in/wp-content/uploads/sites/3/2022/03/What-is-Financial-Management.jpg.optimal.jpg'
-  }];
-
+  const router = useRouter();
   const [searchTerm, setSearchTerm] = useState('');
 
   const handleSearch = () => {
 
+  }
+
+  const handleModuleClick = () => {
+    router.push('/Path')
   }
 
   return (
@@ -48,8 +35,11 @@ const Explore = () => {
         <FlatList
           style={styles.horizontalList}
           horizontal
-          data={path}
-          renderItem={({ item }) => <View style={styles.horizontalCardContainer}><PreviewCard preview={item} /></View>}
+          data={preview}
+          renderItem={({ item }) =>
+            <View style={styles.horizontalCardContainer}>
+              <PreviewCard onClick={handleModuleClick} preview={item} />
+            </View>}
           keyExtractor={(item) => item.id}
         />
       </View>

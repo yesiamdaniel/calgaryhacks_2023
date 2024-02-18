@@ -3,16 +3,15 @@ import styles from "../../styles/styles";
 import { View, TouchableOpacity, Text, Image, ImageBackground, Button } from "react-native";
 import ProgressBarContainer from "../utilities/ProgressBarContainer";
 
-const PreviewCard = ({ preview }) => {
+const PreviewCard = ({ showDetails = true, preview, onClick }) => {
     return (
         <View style={styles.cardContainer}>
-
             <ImageBackground
                 source={{ uri: preview.imageURL }}
                 resizeMode='cover'
                 imageStyle={styles.card}>
-                <View style={styles.imageOverlay}></View>
-                <TouchableOpacity style={styles.cardTextContainer}>
+                <View style={styles.imageOverlay(showDetails)}></View>
+                <TouchableOpacity style={styles.cardTextContainer} onPress={onClick}>
                     <View style={styles.cardTextTopRow}>
                         <Text style={styles.cardText}>{preview.timeMinutes} minutes</Text>
                         <View>
@@ -20,11 +19,12 @@ const PreviewCard = ({ preview }) => {
                             <ProgressBarContainer progress={preview.progress}></ProgressBarContainer>
                         </View>
                     </View>
-
-                    <View style={styles.cardTextMidRow}>
-                        <Text style={styles.cardTextTitle}>{preview.title}</Text>
-                        <Text style={styles.cardText}>{preview.description}</Text>
-                    </View>
+                    {showDetails && (
+                        <View style={styles.cardTextMidRow}>
+                            <Text style={styles.cardTextTitle}>{preview.title}</Text>
+                            <Text style={styles.cardText}>{preview.description}</Text>
+                        </View>
+                    )}
 
                     <View style={styles.cardTextBotRow}>
                         <Text style={styles.cardTextMoney}>+${preview.cashReward}</Text>
