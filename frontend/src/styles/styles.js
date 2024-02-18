@@ -28,7 +28,7 @@ const styles = StyleSheet.create({
     },
     card: {
         borderRadius: 10,
-        backgroundColor: 'green'
+        backgroundColor: 'green',
     },
     cardText: {
         color: 'white',
@@ -56,13 +56,20 @@ const styles = StyleSheet.create({
         padding: 10,
         borderRadius: 10,
         width: 200,
-        height: 200,
-        backgroundColor: 'blue'
+        height: 'auto',
     },
     cardTextContainer: {
         justifyContent: 'space-between',
         alignContent: 'space-between',
         height: 160,
+        padding: 10,
+        borderRadius: 10,
+        width: 'auto'
+    },
+    moduleCardTextContainer: {
+        justifyContent: 'space-between',
+        alignContent: 'space-between',
+        height: 240,
         padding: 10,
         borderRadius: 10,
         width: 'auto'
@@ -84,8 +91,8 @@ const styles = StyleSheet.create({
         flexDirection: 'column',
         justifyContent: 'space-between',
         alignItems: 'center',
-        backgroundColor: 'gray',
-        width: '100%'
+        width: '100%',
+        paddingBottom: 20
     },
     moduleCard: {
         height: 400,
@@ -109,6 +116,7 @@ const styles = StyleSheet.create({
     progressBar: {
         margin: 5,
         color: "green",
+        trackColor: "white",
         borderRadius: 10,
         width: '100%',
         flex: 1

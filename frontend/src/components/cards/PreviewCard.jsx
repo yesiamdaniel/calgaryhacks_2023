@@ -5,12 +5,10 @@ import { View, TouchableOpacity, Text, Image, ImageBackground, Button } from "re
 import ProgressBarContainer from "../utilites/ProgressBarContainer";
 
 const PreviewCard = ({ preview }) => {
-    const image = { uri: 'https://legacy.reactjs.org/logo-og.png' };
-
     return (
         <View style={styles.cardContainer}>
             <ImageBackground
-                source={image}
+                source={{ uri: preview.imageURL }}
                 resizeMode='cover'
                 imageStyle={styles.card}>
                 <TouchableOpacity style={styles.cardTextContainer}>
