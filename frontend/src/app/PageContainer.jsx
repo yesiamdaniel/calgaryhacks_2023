@@ -9,7 +9,7 @@ import Navbar from '../components/Navbar/Navbar';
 import Home from '../pages/Home/Home';
 import Explore from '../pages/Explore/Explore';
 import Learn from '../pages/Learn/Learn';
-import Progress from '../pages/Progress/Progress';
+import Market from '../pages/Market/Market';
 import Profile from '../pages/Profile/Profile';
 import Error from '../pages/Error/Error';
 
@@ -40,9 +40,9 @@ const PageContainer = () => {
           <Learn />
           <Navbar />
         </>
-      ) : currentPage === PAGES.PROGRESS ? (
+      ) : currentPage === PAGES.MARKET ? (
         <>
-          <Progress />
+          <Market  />
           <Navbar />
         </>
       ) : currentPage === PAGES.PROFILE ? (
