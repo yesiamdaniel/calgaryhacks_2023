@@ -1,17 +1,34 @@
 import { StyleSheet, Text, View } from "react-native";
 import { useRouter } from "expo-router";
+import {Button} from "@rneui/base"
 
 const Home = () => {
     const router = useRouter();
+/*
+    return (
+        <SearchBar>
+
+
+        </SearchBar>
+
+
+    );
+    */
+
+
 
     return (
         <View style={styles.container}>
             <View style={styles.main}>
                 <Text style={styles.title}>Hello World</Text>
                 <Text style={styles.subtitle}>This is the first page of your app.</Text>
+                <Button title="Hello">
+
+                </Button>
             </View>
         </View>
     );
+    
 }
 
 const styles = StyleSheet.create({
