@@ -7,18 +7,6 @@ import { useState, useEffect } from "react";
 
 const Home = () => {
     const router = useRouter();
-/*
-    return (
-        <SearchBar>
-
-
-        </SearchBar>
-
-
-    );
-    */
-
-
 
     const cards = [
  
@@ -36,55 +24,50 @@ const Home = () => {
     const [searchText, setSearchText] = useState("");
 
 
+    const updateText = (text) => {
+        setSearchText(text);
+        refreshVisCards(searchText);
+    }
+
     const refreshVisCards = (text) => {
         var vis = [];
         var compText = text.toLowerCase();
 
-        setSearchText(text);
 
-        for (let i = 0; i < visCards.length; ++i) {
+        for (let i = 0; i < cards.length; ++i) {
 
-            if (visCards[i].props.id.toLowerCase().includes(compText)) {
-                vis.push(visCards[i]);
+            if (cards[i].props.id.toLowerCase().includes(compText.toLowerCase())) {
+                vis.push(cards[i]);
             }
         }
-        setVisCards(vis);
-
-        
+        setVisCards(vis);        
     }
 
     useEffect(() => {
         if (visCards.length === 0) {
             setVisCards(cards);
         }
-    }, [,searchText]);
+
+    }, [, visCards]);
 
     return (
 
-        
         <View style={styles.container}>
-  
-
-
             <View style={styles.main}>
 
             <SearchBar
         placeholder="Search..."
-        onChangeText={refreshVisCards}
-        value={searchText}
-        >
+        onChangeText={updateText}
+        value={searchText}>
       
         </SearchBar>
 
                 <Text style={styles.title}>Hello World</Text>
                 <Text style={styles.subtitle}>This is the first page of your app.</Text>
-               
-
-    
-            <View id="Cards">
+                
+            <View>
                 {visCards}
             </View>
-            <Searchable></Searchable>
             </View>
         </View>
     );
