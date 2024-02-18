@@ -57,6 +57,9 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         justifyContent: 'space-between',
         alignItems: 'flex-end'
+    },
+    input: {
+        color: "#38434D"
     }
 });
 
