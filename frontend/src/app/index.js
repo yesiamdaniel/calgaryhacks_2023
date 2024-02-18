@@ -1,39 +1,22 @@
-import { StyleSheet, Text, View } from "react-native";
 import { useRouter } from "expo-router";
+import { Provider } from 'react-redux';
+import { PersistGate } from 'redux-persist/integration/react';
+import { persistStore } from 'redux-persist';
 
-const Home = () => {
+import { store, persistor } from "../redux/state/store";
+import PageContainer from "./PageContainer";
+
+const Root = () => {
     const router = useRouter();
 
     return (
-        <View style={styles.container}>
-            <View style={styles.main}>
-                <Text style={styles.title}>Hello World</Text>
-                <Text style={styles.subtitle}>This is the first page of your app.</Text>
-            </View>
-        </View>
+        <Provider store={store}>
+            <PersistGate loading={null} persistor={persistor}>
+                <PageContainer></PageContainer>
+            </PersistGate>
+        </Provider>
     );
+
 }
 
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        alignItems: "center",
-        padding: 24,
-    },
-    main: {
-        flex: 1,
-        justifyContent: "center",
-        maxWidth: 960,
-        marginHorizontal: "auto",
-    },
-    title: {
-        fontSize: 64,
-        fontWeight: "bold",
-    },
-    subtitle: {
-        fontSize: 36,
-        color: "#38434D",
-    },
-});
-
-export default Home;
+export default Root;

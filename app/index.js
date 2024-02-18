@@ -1,7 +1,7 @@
-import Home from "../frontend/src/app";
+import Root from "../frontend/src/app";
 
 export default function Page() {
   return (
-    <Home />
+    <Root />
   );
 }
