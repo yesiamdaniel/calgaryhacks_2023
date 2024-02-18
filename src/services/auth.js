@@ -1,5 +1,6 @@
 import { createUserWithEmailAndPassword, sendEmailVerification, signInWithEmailAndPassword } from "firebase/auth"
 import { auth } from "./config"
+import { setUserData } from "./userService"
 
 export const signup = async (email, password) => {
     try {
@@ -9,6 +10,13 @@ export const signup = async (email, password) => {
         await emailVerification();
         const user = userCredential.user;
         console.log("User Registered:", user);
+
+        const additionalUserInfo = {
+            name: '', //placeholder
+            createdAt: new Date()
+        }
+
+        await setUserData(user.uid, additionalUserInfo)
         return user;
     } catch (error) {
         console.error("Registration Error: ", error)
