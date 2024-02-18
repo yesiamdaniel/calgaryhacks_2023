@@ -55,7 +55,7 @@ const styles = StyleSheet.create({
     },
     cardTextBotRow: {
         flexDirection: 'row',
-        justifyContent: 'flex-end',
+        justifyContent: 'space-between',
         alignItems: 'flex-end'
     }
 });
