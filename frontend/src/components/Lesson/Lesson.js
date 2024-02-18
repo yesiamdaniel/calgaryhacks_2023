@@ -1,4 +1,4 @@
-import {  Touchable, View, StyleSheet, Dimensions, ScrollView, SafeAreaView } from "react-native";
+import { ImageBackground,  Touchable, View, StyleSheet, Dimensions, ScrollView, SafeAreaView, FlatList } from "react-native";
 import { SearchBar, Text } from "@rneui/themed"
 import { useState, useEffect } from "react";
 import { Button } from "@rneui/base";
@@ -14,8 +14,7 @@ import { firebaseConfig, app, db } from "../../constants/firebase";
 
 const Lesson = (props) => {
     const router = useRouter();
-
-    [currentView, setView] = useState("lesson");
+    [currentView, setView] = useState("quiz");
 
 
     const testFire = () => {
@@ -44,6 +43,7 @@ const Lesson = (props) => {
 
         <ScrollView style={styles.scrollView}>
           <View style={styles.container}>
+
   
           <View style={styles.topBar}>
   
@@ -65,6 +65,71 @@ const Lesson = (props) => {
           </View>
           </ScrollView>
           </SafeAreaView>
+      );
+
+
+      const quiz = (
+<SafeAreaView style={styles.SafeAreaView}>
+
+<ScrollView style={styles.scrollView}>
+  <View style={styles.container}>
+
+
+  <View style={styles.topBar}>
+
+          <Text h3Style={styles.header} h3>
+                  Quiz
+          </Text>
+
+      </View>
+      <View style={styles.main}>
+          
+
+
+    
+      <Text h3Style={styles.contentText} h3 adjustsFontSizeToFit={true}>
+          {props.info.question}
+          </Text>
+
+
+        <View 
+        style={styles.buttonContainer} id="buttons">
+        <Button color="#6b53ff" 
+        style={styles.answerButton} 
+        title={props.info.answers[0]}
+        radius="15">
+        </Button>
+        <Button color="#6b53ff" 
+        style={styles.answerButton} 
+        title={props.info.answers[1]}
+        radius="15">
+        </Button>
+        <Button color="#6b53ff" 
+        style={styles.answerButton} 
+        title={props.info.answers[2]}
+        radius="15">
+        </Button>
+        <Button color="#6b53ff" 
+        style={styles.answerButton} 
+        title={props.info.answers[3]}
+        radius="15">
+        </Button>
+
+
+        </View>
+
+
+
+
+
+  
+
+      </View>
+
+  </View>
+  </ScrollView>
+  </SafeAreaView>
+
       );
 
 
@@ -92,7 +157,7 @@ const styles = StyleSheet.create({
     main: {
         flex: 1,
         alignItems:"center",
-        marginTop:"0px",
+        marginTop:"10px",
         maxWidth: 960,
         backgroundColor: "#ffffff",
         width: Dimensions.get('window').width
@@ -118,7 +183,7 @@ const styles = StyleSheet.create({
         backgroundColor:"#ffffff",
         flexDirection:"row",
         width: "100%",
-        height:"15%"
+        marginBottom:100
     },
     topLeftIcon: {
         flex:1,
@@ -142,16 +207,38 @@ const styles = StyleSheet.create({
     contentText: {
         color:"black",
         marginLeft:"10%",
-        width:"90%",
+        width:"80%",
         alignSelf:"flex-start",
         flex:1,
-        fontSize:20
+        fontSize:20,
+        backgroundColor:"white",
+        textAlign:"center",
+        shadowColor: '#171717',
+        shadowOffset: {width: -2, height: 4},
+        shadowOpacity: 0.3,
+        shadowRadius: 3,
+        borderRadius:10
     },
     scrollView : {
         marginHorizontal:0
     },
     SafeAreaView: {
         width: Dimensions.get('window').width
+    },
+    answerButton:{
+        backgroundColor:"#6b53ff",
+        padding:5,
+        radius:10
+    },
+    buttonContainer: {
+        alignContent:"center",
+        flex:1,
+        flexDirection:"column",
+        gap:15,
+        marginTop:50   
+    },
+    questionBox: {
+    
     }
     
 
