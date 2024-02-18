@@ -2,29 +2,29 @@ import { StyleSheet, Text, View } from "react-native";
 import { useRouter } from "expo-router";
 import {Button} from "@rneui/base"
 
+import {SearchBar} from "@rneui/themed"
+import { useState, useEffect } from "react";
+import Explore from "../components/Explore/Explore"
+
 const Home = () => {
     const router = useRouter();
-/*
-    return (
-        <SearchBar>
-
-
-        </SearchBar>
-
-
-    );
-    */
-
-
 
     return (
+
         <View style={styles.container}>
+
             <View style={styles.main}>
+
+            <Explore>
+
+            </Explore>
+
+
                 <Text style={styles.title}>Hello World</Text>
                 <Text style={styles.subtitle}>This is the first page of your app.</Text>
-                <Button title="Hello">
+  
+                
 
-                </Button>
             </View>
         </View>
     );
