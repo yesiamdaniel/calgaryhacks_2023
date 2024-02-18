@@ -1,4 +1,5 @@
 import { StyleSheet } from "react-native";
+import { COLORS, FONTS } from "../constants/themes/"
 
 const styles = StyleSheet.create({
     container: {
@@ -142,17 +143,17 @@ const styles = StyleSheet.create({
     progressionPage: {
         margin: 30,
         alignItems: 'center',
-        backgroundColor: 'red'
     },
     progressBarTextContainer: {
         flexDirection: 'row',
         justifyContent: 'space-between',
         width: '100%',
+        padding: 10,
     },
     progressContainer: {
         flexDirection: 'column',
         margin: 5,
-        height: 50
+        height: 50,
     },
     progressBarTextLeftContainer: {
         flexDirection: 'row',
@@ -161,8 +162,12 @@ const styles = StyleSheet.create({
         color: '#676767',
     },
     progressPageTitle: {
-        fontWeight: 'bold',
-        fontSize: 30
+        fontFamily: FONTS.DMBold,
+        fontSize: 40,
+        marginBottom: 60,
+    },
+    progressBarTextTitle: {
+        fontFamily: FONTS.DMMedium,
     },
 
     /**
@@ -173,7 +178,7 @@ const styles = StyleSheet.create({
 
     progressBar: {
         margin: 5,
-        color: "green",
+        color: COLORS.green[600],
         trackColor: "white",
         borderRadius: 10,
         width: '100%',

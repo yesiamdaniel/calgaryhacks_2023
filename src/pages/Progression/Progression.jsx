@@ -2,6 +2,7 @@ import { View, Text, SafeAreaView, ScrollView, FlatList, ImageBackground, Toucha
 import ModulePreviewCard from '../../components/cards/ModulePreviewCard';
 import ProgressBarContainer from '../../components/utilities/ProgressBarContainer';
 import styles from '../../styles/styles';
+import { COLORS } from '../../constants/themes';
 
 const Progression = () => {
     // to be passed from page to preview card
@@ -76,7 +77,7 @@ const Progression = () => {
             </View>
 
             <View style={styles.progressContainer}>
-                <View style={[styles.progressBarTextContainer, { backgroundColor: '#448817' }]}>
+                <View style={[styles.progressBarTextContainer, { backgroundColor: COLORS.green[100] }]}>
                     <View style={styles.progressBarTextLeftContainer}>
                         <Text style={styles.progressBarTextTitle}>Investment Knowledge: </Text>
                         <Text style={styles.progressBarTextScore}>3421</Text>
@@ -84,12 +85,12 @@ const Progression = () => {
                     <Text style={styles.progressBarTextLevel}>Intermediate</Text>
                 </View>
                 <View>
-                    <ProgressBarContainer progress={0.5}></ProgressBarContainer>
+                    <ProgressBarContainer barColor={COLORS.green[300]} progress={0.5}></ProgressBarContainer>
                 </View>
             </View>
 
             <View style={styles.progressContainer}>
-                <View style={[styles.progressBarTextContainer, { backgroundColor: '#F3EAB9' }]}>
+                <View style={[styles.progressBarTextContainer, { backgroundColor: COLORS.green[100] }]}>
                     <View style={styles.progressBarTextLeftContainer}>
                         <Text style={styles.progressBarTextTitle}>Investment Knowledge: </Text>
                         <Text style={styles.progressBarTextScore}>3421</Text>
@@ -97,12 +98,12 @@ const Progression = () => {
                     <Text style={styles.progressBarTextLevel}>Intermediate</Text>
                 </View>
                 <View>
-                    <ProgressBarContainer progress={0.75}></ProgressBarContainer>
+                    <ProgressBarContainer barColor={COLORS.green[100]} progress={0.75}></ProgressBarContainer>
                 </View>
             </View>
 
             <View style={styles.progressContainer}>
-                <View style={[styles.progressBarTextContainer, { backgroundColor: '#3EB4E6'}]}>
+                <View style={[styles.progressBarTextContainer, { backgroundColor: COLORS.blue[100] }]}>
                     <View style={styles.progressBarTextLeftContainer}>
                         <Text style={styles.progressBarTextTitle}>Investment Knowledge: </Text>
                         <Text style={styles.progressBarTextScore}>3421</Text>
@@ -110,12 +111,12 @@ const Progression = () => {
                     <Text style={styles.progressBarTextLevel}>Intermediate</Text>
                 </View>
                 <View>
-                    <ProgressBarContainer progress={0.10}></ProgressBarContainer>
+                    <ProgressBarContainer barColor={COLORS.blue[100]} progress={0.20}></ProgressBarContainer>
                 </View>
             </View>
 
             <View style={styles.progressContainer}>
-                <View style={[styles.progressBarTextContainer, { backgroundColor: '#9B41F5' }]}>
+                <View style={[styles.progressBarTextContainer, { backgroundColor: COLORS.plum[100] }]}>
                     <View style={styles.progressBarTextLeftContainer}>
                         <Text style={styles.progressBarTextTitle}>Investment Knowledge: </Text>
                         <Text style={styles.progressBarTextScore}>3421</Text>
@@ -123,12 +124,12 @@ const Progression = () => {
                     <Text style={styles.progressBarTextLevel}>Intermediate</Text>
                 </View>
                 <View>
-                    <ProgressBarContainer progress={0.5}></ProgressBarContainer>
+                    <ProgressBarContainer barColor={COLORS.plum[400]} progress={0.5}></ProgressBarContainer>
                 </View>
             </View>
 
             <View style={styles.progressContainer}>
-                <View style={[styles.progressBarTextContainer, { backgroundColor: '#D60B48' }]}>
+                <View style={[styles.progressBarTextContainer, { backgroundColor: COLORS.green[100] }]}>
                     <View style={styles.progressBarTextLeftContainer}>
                         <Text style={styles.progressBarTextTitle}>Investment Knowledge: </Text>
                         <Text style={styles.progressBarTextScore}>3421</Text>
@@ -136,7 +137,7 @@ const Progression = () => {
                     <Text style={styles.progressBarTextLevel}>Intermediate</Text>
                 </View>
                 <View>
-                    <ProgressBarContainer barColor={'D60B48'} progress={0.6}></ProgressBarContainer>
+                    <ProgressBarContainer barColor={COLORS.green[300]} progress={0.6}></ProgressBarContainer>
                 </View>
             </View>
 

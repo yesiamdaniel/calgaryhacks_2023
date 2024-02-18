@@ -8,7 +8,7 @@ const ProgressBarContainer = ({ barColor, progress }) => {
 
     return (
         <View style={styles.progressBarContainer}>
-            <LinearProgress style={styles.progressBar} color="green" value={progress} />
+            <LinearProgress style={styles.progressBar} color={barColor} value={progress} />
         </View>
     )
 }
