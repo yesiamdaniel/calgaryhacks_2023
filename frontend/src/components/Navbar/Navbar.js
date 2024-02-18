@@ -21,7 +21,7 @@ const Navbar = () => {
             <Button title={strings.Home} onPress={() => dispatchSetPage(PAGES.HOME)}></Button>
             <Button title={strings.Explore} onPress={() => dispatchSetPage(PAGES.EXPLORE)} ></Button>
             <Button title={strings.Train} onPress={() => dispatchSetPage(PAGES.LEARN)}></Button>
-            <Button title={strings.Market} onPress={() => dispatchSetPage(PAGES.PROGRESS)}></Button>
+            <Button title={strings.Market} onPress={() => dispatchSetPage(PAGES.MARKET)}></Button>
             <Button title={strings.Profile} onPress={() => dispatchSetPage(PAGES.PROFILE)}></Button>
         </View>
     );

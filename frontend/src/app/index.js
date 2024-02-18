@@ -1,9 +1,5 @@
 import { Text, Touchable, View, StyleSheet } from "react-native";
 import { Stack, useRouter, Link } from "expo-router";
-import styles from "../styles/styles";
-import Explore from "../components/Explore/Explore"
-import PreviewCard from "../components/cards/PreviewCard";
-import Market from "../components/pages/Market";
 import { en, registerTranslation } from "react-native-paper-dates"
 
 import { Provider } from 'react-redux';
