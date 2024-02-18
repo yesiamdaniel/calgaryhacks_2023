@@ -6,7 +6,6 @@ import userModel from "../models/user/user.model"
 export const signup = async (email, password) => {
     try {
         console.log("Auth.signup")
-        console.log(email, "", password)
         const userCredential = await createUserWithEmailAndPassword(auth, email, password)
         await emailVerification();
         const user = userCredential.user;
