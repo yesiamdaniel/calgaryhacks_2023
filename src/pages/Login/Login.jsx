@@ -13,7 +13,7 @@ const Login = () => {
 
     const handleLogin = async () => {
         try {
-            const user = await login(email, password)
+            const user = await login("nicksavino2@gmail.com", "Test123")
             if (user) {
                 router.navigate("/Home")
             }
@@ -35,7 +35,7 @@ const Login = () => {
     }
 
     return (
-        <View style={styles.main}>
+        <View style={styles.image}>
             <Text>Login</Text>
             <Text>E-mail</Text>
             <TextInput value={email} onChangeText={onChangeEmail} placeholder="Enter an email"></TextInput>
