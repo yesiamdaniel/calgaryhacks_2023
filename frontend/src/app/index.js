@@ -7,6 +7,7 @@ import { useState, useEffect } from "react";
 import Explore from "../components/Explore/Explore"
 import { Button } from "@rneui/base";
 import PreviewCard from "../components/cards/PreviewCard";
+import ModulePreviewCard from "../components/cards/ModulePreviewCard";
 
 const Home = () => {
     const router = useRouter();
@@ -22,6 +23,8 @@ const Home = () => {
         progress: 0.75 // this will be stored in the user object
     };
 
+    // <View style={{flexDirection: 'row', gap: 20, margin: 10}}>
+
     return (
         <View style={styles.container}>
 
@@ -30,7 +33,11 @@ const Home = () => {
                 <Explore>
 
                 </Explore>
-                <PreviewCard preview={mockPathTile}></PreviewCard>
+                <View style={{ flexDirection: 'row', justifyContent: 'space-around' }}>
+                    <ModulePreviewCard preview={mockPathTile} />
+                    <ModulePreviewCard preview={mockPathTile} />
+                </View>
+                <PreviewCard preview={mockPathTile} />
             </View>
         </View>
     );
