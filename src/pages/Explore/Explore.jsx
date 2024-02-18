@@ -7,8 +7,10 @@ import Header from '../../components/layout/Header/Header';
 import Search from '../../components/layout/Search/Search';
 import RowCard from '../../components/cards/rowCard/RowCard';
 import { categories } from '../../constants/data/categories';
+import { useRouter } from 'expo-router';
 
 const Explore = () => {
+  const router = useRouter();
   const path = [{
     id: 789,
     title: "Foundations of Financial Literacy",
@@ -35,6 +37,10 @@ const Explore = () => {
 
   }
 
+  const handleModuleClick = () => {
+    router.push('/Lesson')
+  }
+
   return (
     <ScrollView style={styles.mainContainer} >
       <Header text="explore" />
@@ -49,7 +55,7 @@ const Explore = () => {
           style={styles.horizontalList}
           horizontal
           data={path}
-          renderItem={({ item }) => <View style={styles.horizontalCardContainer}><PreviewCard preview={item} /></View>}
+          renderItem={({ item }) => <View style={styles.horizontalCardContainer}><PreviewCard onClick={handleModuleClick} preview={item} /></View>}
           keyExtractor={(item) => item.id}
         />
       </View>
