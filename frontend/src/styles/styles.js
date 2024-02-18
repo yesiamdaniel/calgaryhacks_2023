@@ -34,7 +34,9 @@ const styles = StyleSheet.create({
         color: 'white',
     },
     cardTextMoney: {
-        color: 'green'
+        color: 'green',
+        fontStyle: 'bold',
+        fontSize: 18
     },
     cardTextTitle: {
         fontWeight: 'bold',
@@ -74,6 +76,17 @@ const styles = StyleSheet.create({
         borderRadius: 10,
         width: 'auto'
     },
+    pathCardTextContainer: {
+        height: 350,
+        padding: 10,
+        borderRadius: 10,
+        width: 'auto',
+    },
+    pathCardWrapper: {
+        justifyContent: 'center',
+        height: 300,
+        flow: 2
+    },
     cardTextTopRow: {
         flexDirection: 'row',
         justifyContent: 'space-between'
@@ -82,10 +95,24 @@ const styles = StyleSheet.create({
         flexDirection: 'col',
         justifyContent: 'center',
     },
+    pathCardTextMidRow: {
+        flexDirection: 'col',
+        justifyContent: 'center',
+        marginBottom: 10,
+        marginTop: 10,
+        flex: 8,
+    },
     cardTextBotRow: {
         flexDirection: 'row',
         justifyContent: 'space-between',
         alignItems: 'flex-end'
+    },
+    pathCardTextBotRow: {
+        flexDirection: 'row',
+        marginTop: 0,
+        marginBottom: 100,
+        flex: 1,
+        alignItems: 'flex-start',
     },
     moduleCardTextBotRow: {
         flexDirection: 'column',
@@ -97,7 +124,6 @@ const styles = StyleSheet.create({
     moduleCard: {
         height: 400,
         borderRadius: 10,
-        backgroundColor: 'red',
         width: 250,
         borderRadius: 10,
         flex: 1
@@ -126,8 +152,11 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         display: 'flex',
         flex: 1,
-    }, 
-    navbar : {
+    },
+    flatListContainer: {
+        height: 400,
+    },
+    navbar: {
         flexDirection: "row",
         alignItems: "flex-end",
         justifyContent: "space-between",

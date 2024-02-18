@@ -22,7 +22,7 @@ const ModulePreviewCard = ({ preview }) => {
                     </View>
 
                     <View style={styles.cardTextMidRow}>
-                        <Text style={styles.cardTextMoney}>${preview.cashReward}</Text>
+                        <Text style={styles.cardTextMoney}>+${preview.cashReward}</Text>
                         <Text style={styles.cardText}>{preview.timeMinutes} minutes</Text>
                     </View>
 

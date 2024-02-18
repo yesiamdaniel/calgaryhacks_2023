@@ -11,6 +11,7 @@ import Explore from '../pages/Explore/Explore';
 import Learn from '../pages/Learn/Learn';
 import Progress from '../pages/Progress/Progress';
 import Profile from '../pages/Profile/Profile';
+import Path from '../pages/Path/Path';
 import Error from '../pages/Error/Error';
 
 const PageContainer = () => {
@@ -48,6 +49,11 @@ const PageContainer = () => {
       ) : currentPage === PAGES.PROFILE ? (
         <>
           <Profile />
+          <Navbar />
+        </>
+      ) : currentPage === PAGES.PATH ? (
+        <>
+          <Path />
           <Navbar />
         </>
       ) : (

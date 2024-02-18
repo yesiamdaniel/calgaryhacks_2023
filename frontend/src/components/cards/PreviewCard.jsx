@@ -26,7 +26,7 @@ const PreviewCard = ({ preview }) => {
                     </View>
 
                     <View style={styles.cardTextBotRow}>
-                        <Text style={styles.cardTextMoney}>${preview.cashReward}</Text>
+                        <Text style={styles.cardTextMoney}>+${preview.cashReward}</Text>
                         <Text style={styles.cardText}>Click to get started</Text>
                     </View>
 
