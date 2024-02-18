@@ -3,72 +3,9 @@ import ModulePreviewCard from '../../components/cards/ModulePreviewCard';
 import ProgressBarContainer from '../../components/utilities/ProgressBarContainer';
 import styles from '../../styles/styles';
 import { COLORS } from '../../constants/themes';
+import { preview } from '../../constants/data/categories';
 
 const Progression = () => {
-    // to be passed from page to preview card
-    const mockData = [
-        {
-            id: 123,
-            title: "Foundations of Financial Literacy",
-            description: "Description of learning some finance bullshit idk",
-            cashReward: 1500,
-            timeMinutes: 20, // could be a time object
-            timeHours: 0,
-            progress: 0.75, // this will be stored in the user object
-            imageURL: 'https://emeritus.org/in/wp-content/uploads/sites/3/2022/03/What-is-Financial-Management.jpg.optimal.jpg'
-        },
-        {
-            id: 456,
-            title: "Foundations of Financial Literacy",
-            description: "Description of learning some finance bullshit idk",
-            cashReward: 1500,
-            timeMinutes: 20, // could be a time object
-            timeHours: 0,
-            progress: 0.75, // this will be stored in the user object
-            imageURL: 'https://emeritus.org/in/wp-content/uploads/sites/3/2022/03/What-is-Financial-Management.jpg.optimal.jpg'
-        },
-        {
-            id: 567,
-            title: "Foundations of Financial Literacy",
-            description: "Description of learning some finance bullshit idk",
-            cashReward: 1500,
-            timeMinutes: 20, // could be a time object
-            timeHours: 0,
-            progress: 0.75, // this will be stored in the user object
-            imageURL: 'https://emeritus.org/in/wp-content/uploads/sites/3/2022/03/What-is-Financial-Management.jpg.optimal.jpg'
-        },
-        {
-            id: 789,
-            title: "Foundations of Financial Literacy",
-            description: "Description of learning some finance bullshit idk",
-            cashReward: 1500,
-            timeMinutes: 20, // could be a time object
-            timeHours: 0,
-            progress: 0.75, // this will be stored in the user object
-            imageURL: 'https://emeritus.org/in/wp-content/uploads/sites/3/2022/03/What-is-Financial-Management.jpg.optimal.jpg'
-        },
-        {
-            id: 134,
-            title: "Foundations of Financial Literacy",
-            description: "Description of learning some finance bullshit idk",
-            cashReward: 1500,
-            timeMinutes: 20, // could be a time object
-            timeHours: 0,
-            progress: 0.75, // this will be stored in the user object
-            imageURL: 'https://emeritus.org/in/wp-content/uploads/sites/3/2022/03/What-is-Financial-Management.jpg.optimal.jpg'
-        },
-    ];
-
-    const mockPath = {
-        id: 134,
-        title: "Foundations of Financial Literacy",
-        description: "Description of learning some finance bullshit idk",
-        cashReward: 1500,
-        timeMinutes: 20, // could be a time object
-        timeHours: 0,
-        progress: 0.75, // this will be stored in the user object
-        imageURL: 'https://emeritus.org/in/wp-content/uploads/sites/3/2022/03/What-is-Financial-Management.jpg.optimal.jpg'
-    };
 
     return (
         <View style={styles.progressionPage}>
