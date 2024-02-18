@@ -1,16 +1,15 @@
 import { Text, Touchable, View, StyleSheet } from "react-native";
 import { Stack, useRouter, Link } from "expo-router";
-import Login from "../components/login/LoginPage";
 import styles from "../styles/styles";
-import { SearchBar } from "@rneui/themed"
-import { useState, useEffect } from "react";
 import Explore from "../components/Explore/Explore"
-import { Button } from "@rneui/base";
 import PreviewCard from "../components/cards/PreviewCard";
+import Market from "../components/pages/Market";
+import { en, registerTranslation } from "react-native-paper-dates"
 
 const Home = () => {
     const router = useRouter();
 
+    registerTranslation('en', en);
     // to be passed from page to preview card
     const mockPathTile = {
         id: 123,
@@ -27,10 +26,7 @@ const Home = () => {
 
             <View style={styles.main}>
 
-                <Explore>
-
-                </Explore>
-                <PreviewCard preview={mockPathTile}></PreviewCard>
+                <Market></Market>
             </View>
         </View>
     );

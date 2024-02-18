@@ -59,7 +59,8 @@ const styles = StyleSheet.create({
         alignItems: 'flex-end'
     },
     input: {
-        color: "#38434D"
+        color: "#38434D",
+        backgroundColor: 'grey'
     }
 });
 
