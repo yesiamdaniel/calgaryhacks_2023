@@ -1,5 +1,4 @@
-import { View, Text, TextInput } from "react-native";
-import styles from "../../styles/styles";
+import { View, Text, TextInput, StyleSheet } from "react-native";
 import { useState } from "react";
 import { Button } from "@rneui/base";
 import { login, signup } from "../../services/auth";
@@ -35,17 +34,74 @@ const Login = () => {
     }
 
     return (
-        <View style={styles.image}>
-            <Text>Login</Text>
-            <Text>E-mail</Text>
-            <TextInput value={email} onChangeText={onChangeEmail} placeholder="Enter an email"></TextInput>
-            <Text>Password</Text>
-            <TextInput value={password} onChangeText={onChangePassword} placeholder="Enter a password"></TextInput>
-
-            <Button title="Login" onPress={handleLogin}></Button>
-            <Button title="Register" onPress={handleRegister}></Button>
+        <View style={styles.container}>
+        <Text style={styles.title}>Login</Text>
+        
+        <View style={styles.inputContainer}>
+            <Text style={styles.label}>E-mail</Text>
+            <TextInput
+                style={styles.input}
+                value={email}
+                onChangeText={onChangeEmail}
+                placeholder="Enter an email"
+                keyboardType="email-address"
+            />
         </View>
+
+        <View style={styles.inputContainer}>
+            <Text style={styles.label}>Password</Text>
+            <TextInput
+                style={styles.input}
+                value={password}
+                onChangeText={onChangePassword}
+                placeholder="Enter a password"
+                secureTextEntry={true} // Hides the password
+            />
+        </View>
+
+        <View style={styles.buttonContainer}>
+            <Button title="Login" onPress={handleLogin} />
+            <Button title="Register" onPress={handleRegister} />
+        </View>
+    </View>
     );
 };
+
+const styles = StyleSheet.create({
+    container: {
+        flex: 1,
+        justifyContent: 'center', // Centers content along the main axis
+        alignItems: 'center', // Centers content along the cross axis
+        padding: 20,
+        backgroundColor: '#fff', // Consider setting a background color
+    },
+    title: {
+        fontSize: 24,
+        fontWeight: 'bold',
+        marginBottom: 20,
+    },
+    inputContainer: {
+        width: '100%', // Ensures TextInput takes full width of the container
+        marginBottom: 15,
+    },
+    label: {
+        fontSize: 16,
+        marginBottom: 5,
+    },
+    input: {
+        fontSize: 14,
+        borderWidth: 1,
+        borderColor: '#ccc',
+        padding: 10,
+        borderRadius: 5, // Rounds the corners of the input field
+    },
+    buttonContainer: {
+        flexDirection: 'row', // Aligns buttons in a row
+        justifyContent: 'space-around', // Distributes buttons evenly
+        width: '100%', // Ensures container takes full width
+        marginTop: 20,
+    },
+});
+
 
 export default Login;
