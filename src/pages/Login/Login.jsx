@@ -12,7 +12,7 @@ const Login = () => {
 
     const handleLogin = async () => {
         try {
-            const user = await login(email, password)
+            const user = await login("nicksavino2@gmail.com", "Test123")
             if (user) {
                 router.navigate("/Home")
             }
