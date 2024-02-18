@@ -26,6 +26,7 @@ const Entry = () => {
         <>
             {loggedIn === true ? (
                 <Redirect onLayoutRootView={onLayoutRootView} href='(tabs)/Home' />
+                <Redirect href='(tabs)/Profile' />
             ) : (
                 <Redirect href='landing/Login' />
             )}
