@@ -1,56 +1,18 @@
-import { StyleSheet, Text, View } from "react-native";
-import { useRouter } from "expo-router";
-import {Button} from "@rneui/base"
+import { Text, Touchable, View } from "react-native";
+import { Stack, useRouter, Link } from "expo-router";
+import Login from "../components/login/LoginPage";
+import styles from "../styles/styles";
 
 const Home = () => {
     const router = useRouter();
-/*
-    return (
-        <SearchBar>
-
-
-        </SearchBar>
-
-
-    );
-    */
-
-
-
+    
     return (
         <View style={styles.container}>
             <View style={styles.main}>
-                <Text style={styles.title}>Hello World</Text>
-                <Text style={styles.subtitle}>This is the first page of your app.</Text>
-                <Button title="Hello">
-
-                </Button>
             </View>
         </View>
     );
     
 }
-
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        alignItems: "center",
-        padding: 24,
-    },
-    main: {
-        flex: 1,
-        justifyContent: "center",
-        maxWidth: 960,
-        marginHorizontal: "auto",
-    },
-    title: {
-        fontSize: 64,
-        fontWeight: "bold",
-    },
-    subtitle: {
-        fontSize: 36,
-        color: "#38434D",
-    },
-});
 
 export default Home;
