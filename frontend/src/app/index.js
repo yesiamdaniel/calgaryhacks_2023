@@ -7,7 +7,7 @@ import Explore from "../components/Explore/Explore"
 import Accounts from "../components/Accounts/Accounts";
 import Lesson from "../components/Lesson/Lesson";
 
-import  { getFirestore, collection, query, where, getDocs, setDoc, doc, updateDoc } from 'firebase/firestore';
+import  { increment, FieldValue, getFirestore, collection, query, where, getDocs, setDoc, doc, updateDoc } from 'firebase/firestore';
 import { firebaseConfig, app, db } from "../constants/firebase";
 
 

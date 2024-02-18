@@ -4,11 +4,9 @@ import { useState, useEffect } from "react";
 import { Button } from "@rneui/base";
 import  { initializeApp} from 'firebase/app';
 import { useRouter } from "expo-router";
-import  { getFirestore, collection, query, where, getDocs, setDoc, doc, updateDoc } from 'firebase/firestore';
+import  { getFirestore, collection, query, where, getDocs, setDoc, doc, updateDoc, FieldValue, increment } from 'firebase/firestore';
 import { firebaseConfig, app, db } from "../../constants/firebase";
 import { desKey } from "../../constants/userKeys";
-
-
 
 
 
@@ -26,6 +24,7 @@ const Lesson = (props) => {
     [currBalanace, setCurrBal] = useState(0);
     [profile, setProfile] = useState({});
     [passFail, setPassFail] = useState(false);
+    [submitted, setSubmitted] = useState(false);
 
     const tog1 = () => {
         set1(!answer1);
@@ -70,21 +69,7 @@ const Lesson = (props) => {
         answer4 ? succString += "1" : succString += "0";
 
         setPassFail(succString === props.info.correct);
-
-        // assume one unique key
-        if (succString === props.info.correct) {
-            const q = query(collection(db, "Users"), where("id", "==", desKey));
-            const doc = q.getDocs(q).then((docs) => {
-                docs.forEach(profile = docs.data());
-            });
-
-
-
-        }
-
-
-
-
+        setSubmitted(true);
 
     }
 
@@ -102,22 +87,23 @@ const Lesson = (props) => {
 
     const getProfile = () => {
         var prof = {};
-        const q = query(collection(db, "Users"), where("id", "==", desKey));
+        const q = query(collection(db, "users"), where("id", "==", desKey));
         const doc = getDocs(q).then((docs) => {
-            docs.forEach(prof = docs.data());
+            docs.forEach((x) => {
+                prof = x.data();
+                alert(x.data());
+            });
         });
         setProfile(prof);
     }
 
 
     const updateProfile = () => {
-        var currProfile = profile;
 
         if (passFail) {
-            currentProfile["dollarsEarned"] = currProfile["dollarsEarned"] + props.info.reward;
-            const upload = setDoc(doc(db, "users", desKey), {
-                currentProfile
-              }
+            const upload = updateDoc(doc(db, "users", desKey), 
+                {dollarsEarned : increment(props.info.reward)}
+              
               ).then(alert("Upload Success")); 
         }
         else {
@@ -127,14 +113,11 @@ const Lesson = (props) => {
     }
 
     useEffect(() => {
-
-        if (!passFail) {
-            getProfile();
-        }
-        else {
+        if (submitted) {
             updateProfile();
         }
-    }, [,profile, answer1, answer2, answer3, answer4])
+    
+    }, [submitted, answer1, answer2, answer3, answer4])
        
     
 
