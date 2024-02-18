@@ -14,6 +14,7 @@ const Entry = () => {
         DMRegular: require('../assets/fonts/DMSans-Regular.ttf'),
     })
 
+    registerTranslation('en', en);
     const onLayoutRootView = useCallback(async () => {
         if (fontsLoaded) {
             await SplashScreen.hideAsync();
@@ -24,7 +25,7 @@ const Entry = () => {
 
     return (
         <>
-            {loggedIn === true ? (
+            {loggedIn === false ? (
                 <Redirect onLayoutRootView={onLayoutRootView} href='(tabs)/Home' />
             ) : (
                 <Redirect href='landing/Login' />

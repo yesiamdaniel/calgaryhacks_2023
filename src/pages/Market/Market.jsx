@@ -145,7 +145,7 @@ const Market = () => {
             </View>
 
             <ManageStockModal isVisible={isManageModalVisible} setModalVisible={setManageModalVisible}></ManageStockModal>
-            <PurchaseStockModal stockData={chartData} isVisible={isPurchaseModalVisible} setModalVisible={setPurchaseModalVisible}/>
+            <PurchaseStockModal stockTicker={filterData.stocksTicker} stockData={chartData} isVisible={isPurchaseModalVisible} setModalVisible={setPurchaseModalVisible}/>
 
             <View style={styles.inputContainer}>
             <Text style={styles.label}>Enter a stock ticker</Text>

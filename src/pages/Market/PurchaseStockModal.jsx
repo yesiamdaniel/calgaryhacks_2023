@@ -5,7 +5,7 @@ import { setUserData, updateUserStocks } from "../../services/userService";
 import { useState } from "react";
 
 
-const PurchaseStockModal = ({ isVisible, stockData, setModalVisible }) => {
+const PurchaseStockModal = ({ isVisible, stockData, setModalVisible, stockTicker }) => {
 
     const [shares, setShares] = useState('');
 
@@ -14,14 +14,16 @@ const PurchaseStockModal = ({ isVisible, stockData, setModalVisible }) => {
             alert("Please enter the number of shares you would like to purchase")
         }
 
-        const stock = stockData[0]
-        console.log("Stock: ", stock)
+        const purchasePrice = stockData.datasets[0].data[0]; // This assumes the price is in the first position
+        const purchaseDate = new Date();
+
         const newStock = {
-            ticker: stockData[0],
+            ticker: stockTicker,
             shares: parseInt(shares, 10),
-            purchasePrice: stockData.currentPrice,
-            purchaseDate: new Date(),
+            purchasePrice: purchasePrice,
+            purchaseDate: purchaseDate,
         };
+        console.log(newStock)
 
         try {
             await updateUserStocks(newStock);
