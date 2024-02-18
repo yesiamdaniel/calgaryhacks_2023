@@ -1,7 +1,6 @@
 import { Button, Text } from "@rneui/base";
 import { useCallback, useEffect, useState } from "react";
-import { Dimensions, TextInput, View } from "react-native";
-import styles from "../../styles/styles";
+import { Dimensions, StyleSheet, TextInput, View } from "react-native";
 import { Dropdown } from "react-native-element-dropdown";
 import dayjs from "dayjs";
 import { DatePickerModal, en } from "react-native-paper-dates";
@@ -138,25 +137,26 @@ const Market = () => {
     }, [filterData]);
 
     return (
-        <View>
-            <View>
-                <Text>Current Balance: {userData ? userData.dollarsEarned : 'Loading...'}</Text>
-                <Text>Unrealized Gains</Text>
+        <View style={styles.container}>
+            <View style={styles.balanceContainer}>
+                <Text style={styles.balanceText}>Current Balance: {userData ? userData.dollarsEarned : 'Loading...'}</Text>
+                <Text style={styles.gainsText}>Unrealized Gains</Text>
                 <Button title="Manage Stocks" onPress={() => {setManageModalVisible(true)}}></Button>
             </View>
 
             <ManageStockModal isVisible={isManageModalVisible} setModalVisible={setManageModalVisible}></ManageStockModal>
             <PurchaseStockModal stockData={chartData} isVisible={isPurchaseModalVisible} setModalVisible={setPurchaseModalVisible}/>
 
-            <View>
-            <Text>Enter a stock ticker</Text>
+            <View style={styles.inputContainer}>
+            <Text style={styles.label}>Enter a stock ticker</Text>
             <TextInput style={styles.input} onChangeText={(params) => {changeStockTicker(params)}}></TextInput>
 
-            <Text>Enter a multiplier</Text>
+            <Text style={styles.label}>Enter a multiplier</Text>
             <TextInput style={styles.input} onChangeText={changeMultiplier}></TextInput>
 
-            <Text>select a timespan</Text>
+            <Text style={styles.label}>select a timespan</Text>
             <Dropdown
+                style={styles.dropdown}
                 data={data} labelField="timespan" valueField="value" onChange={(params) => {changeSelection(params)}}/>
 
             <Button onPress={() => setOpen(true)} uppercase={false} mode="outlined">
@@ -173,11 +173,11 @@ const Market = () => {
             />
             </View>
             {chartData.datasets && chartData.datasets.length > 0 && chartData.datasets[0].data.length > 0 ? (
-            <View>
-                <Text style={{fontSize: 20, fontWeight: '500', textAlign: 'center', marginBottom: 10}}>
+            <View style={styles.chartContainer}>
+                <Text style={styles.chartTitle}>
                     {`Chart for ${filterData.stocksTicker}`}
                 </Text>
-                <Text style={{fontSize: 15, fontWeight: '200', textAlign: 'center', marginBottom: 10}}>
+                <Text style={styles.chartDates}>
                     {`${filterData.startDate} - ${filterData.endDate}`}
                 </Text>
                 <LineChart
@@ -210,10 +210,89 @@ const Market = () => {
                 <Button title="Buy Stock" onPress={() => {setPurchaseModalVisible(true)}}></Button>
             </View>
         ) : (
-            <Text>No data available for the chart.</Text>
+            <Text style={styles.noDataText}>No data available for the chart.</Text>
         )}
         </View>
     );
 }
+
+const styles = StyleSheet.create({
+    container: {
+        flex: 1,
+        padding: 20,
+    },
+    balanceContainer: {
+        marginBottom: 20,
+    },
+    balanceText: {
+        fontSize: 18,
+        fontWeight: 'bold',
+    },
+    gainsText: {
+        fontSize: 16,
+        marginVertical: 8,
+    },
+    inputContainer: {
+        marginBottom: 20,
+    },
+    label: {
+        fontSize: 16,
+        marginVertical: 8,
+    },
+    input: {
+        borderWidth: 1,
+        borderColor: '#ccc',
+        borderRadius: 5,
+        padding: 10,
+        marginBottom: 10,
+    },
+    dropdown: {
+        borderWidth: 1,
+        borderColor: '#ccc',
+        borderRadius: 5,
+        padding: 10,
+        marginBottom: 10,
+    },
+    chartContainer: {
+        alignItems: 'center',
+    },
+    chartTitle: {
+        fontSize: 20,
+        fontWeight: '500',
+        textAlign: 'center',
+        marginBottom: 10,
+    },
+    chartDates: {
+        fontSize: 15,
+        fontWeight: '200',
+        textAlign: 'center',
+        marginBottom: 10,
+    },
+    chart: {
+        marginVertical: 8,
+        borderRadius: 16,
+    },
+    noDataText: {
+        textAlign: 'center',
+        fontSize: 16,
+        marginTop: 20,
+    },
+    chartConfig: {
+        backgroundColor: '#e26a00',
+        backgroundGradientFrom: '#fb8c00',
+        backgroundGradientTo: '#ffa726',
+        decimalPlaces: 2,
+        color: (opacity = 1) => `rgba(255, 255, 255, ${opacity})`,
+        labelColor: (opacity = 1) => `rgba(255, 255, 255, ${opacity})`,
+        style: {
+            borderRadius: 16,
+        },
+        propsForDots: {
+            r: '6',
+            strokeWidth: '2',
+            stroke: '#ffa726',
+        },
+    },
+});
 
 export default Market;

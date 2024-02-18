@@ -3,7 +3,7 @@ import styles from "../../styles/styles";
 import { View, TouchableOpacity, Text, Image, ImageBackground, Button } from "react-native";
 import ProgressBarContainer from "../utilities/ProgressBarContainer";
 
-const PreviewCard = ({ preview }) => {
+const PreviewCard = ({ preview, onClick }) => {
     return (
         <View style={styles.cardContainer}>
 
@@ -12,7 +12,7 @@ const PreviewCard = ({ preview }) => {
                 resizeMode='cover'
                 imageStyle={styles.card}>
                 <View style={styles.imageOverlay}></View>
-                <TouchableOpacity style={styles.cardTextContainer}>
+                <TouchableOpacity style={styles.cardTextContainer} onPress={onClick}>
                     <View style={styles.cardTextTopRow}>
                         <Text style={styles.cardText}>{preview.timeMinutes} minutes</Text>
                         <View>

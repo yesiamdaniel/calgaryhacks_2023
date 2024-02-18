@@ -8,6 +8,7 @@ import Search from '../../components/layout/Search/Search';
 import RowCard from '../../components/cards/rowCard/RowCard';
 import { categories } from '../../constants/data/categories';
 import { preview } from '../../constants/data/categories';
+import { useRouter } from 'expo-router';
 
 const Explore = () => {
 
@@ -15,6 +16,10 @@ const Explore = () => {
 
   const handleSearch = () => {
 
+  }
+
+  const handleModuleClick = () => {
+    router.push('/Lesson')
   }
 
   return (
