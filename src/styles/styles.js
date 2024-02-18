@@ -135,6 +135,38 @@ const styles = StyleSheet.create({
 
     /**
      * =============================
+     * Progression Page
+     * =============================
+     */
+
+    progressionPage: {
+        margin: 30,
+        alignItems: 'center',
+        backgroundColor: 'red'
+    },
+    progressBarTextContainer: {
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        width: '100%',
+    },
+    progressContainer: {
+        flexDirection: 'column',
+        margin: 5,
+        height: 50
+    },
+    progressBarTextLeftContainer: {
+        flexDirection: 'row',
+    },
+    progressBarTextScore: {
+        color: '#676767',
+    },
+    progressPageTitle: {
+        fontWeight: 'bold',
+        fontSize: 30
+    },
+
+    /**
+     * =============================
      * Utilities
      * =============================
      */

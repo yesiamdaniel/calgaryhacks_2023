@@ -4,7 +4,7 @@ import styles from "../../styles/styles";
 import { View } from "react-native";
 import { LinearProgress } from "@rneui/base";
 
-const ProgressBarContainer = ({ progress }) => {
+const ProgressBarContainer = ({ barColor, progress }) => {
 
     return (
         <View style={styles.progressBarContainer}>
