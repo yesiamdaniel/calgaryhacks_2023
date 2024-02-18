@@ -126,7 +126,13 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         display: 'flex',
         flex: 1,
-    }
+    }, 
+    navbar : {
+        flexDirection: "row",
+        alignItems: "flex-end",
+        justifyContent: "space-between",
+        width: "100%", // take full width of the screen
+    },
 });
 
 export default styles;

@@ -1,15 +1,13 @@
-import { Text, Touchable, View, StyleSheet } from "react-native";
-import { Stack, useRouter, Link } from "expo-router";
-import Login from "../components/login/LoginPage";
-import styles from "../styles/styles";
-import { SearchBar } from "@rneui/themed"
-import { useState, useEffect } from "react";
-import Explore from "../components/Explore/Explore"
-import { Button } from "@rneui/base";
-import PreviewCard from "../components/cards/PreviewCard";
+import { useRouter } from "expo-router";
+import { Provider } from 'react-redux';
+import { PersistGate } from 'redux-persist/integration/react';
+import { persistStore } from 'redux-persist';
+
+import { store, persistor } from "../redux/state/store";
+import PageContainer from "./PageContainer";
 import ModulePreviewCard from "../components/cards/ModulePreviewCard";
 
-const Home = () => {
+const Root = () => {
     const router = useRouter();
 
     const image = { uri: 'https://emeritus.org/in/wp-content/uploads/sites/3/2022/03/What-is-Financial-Management.jpg.optimal.jpg' };
@@ -28,21 +26,13 @@ const Home = () => {
     // <View style={{flexDirection: 'row', gap: 20, margin: 10}}>
 
     return (
-        <View style={styles.container}>
-
-            <View style={styles.main}>
-
-                <Explore>
-
-                </Explore>
-                <View style={{ flexDirection: 'row', justifyContent: 'space-around' }}>
-                    <ModulePreviewCard preview={mockPathTile} />
-                    <ModulePreviewCard preview={mockPathTile} />
-                </View>
-                <PreviewCard preview={mockPathTile} />
-            </View>
-        </View>
+        <Provider store={store}>
+            <PersistGate loading={null} persistor={persistor}>
+                <PageContainer></PageContainer>
+            </PersistGate>
+        </Provider>
     );
+
 }
 
-export default Home;
+export default Root;
