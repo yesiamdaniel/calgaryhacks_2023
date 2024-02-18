@@ -1,24 +1,22 @@
-import { Text, Touchable, View } from "react-native";
-import { Stack, useRouter, Link } from "expo-router";
-import Login from "../components/login/LoginPage";
-import styles from "../styles/styles";
+import { useRouter } from "expo-router";
+import { Provider } from 'react-redux';
+import { PersistGate } from 'redux-persist/integration/react';
+import { persistStore } from 'redux-persist';
 
-import "expo-router/entry"
-import Navbar from "../components/Navbar/Navbar";
+import { store, persistor } from "../redux/state/store";
+import PageContainer from "./PageContainer";
 
-const Home = () => {
+const Root = () => {
     const router = useRouter();
+
     return (
-
-        <View style={styles.container}>
-
-            <View style={styles.main}>
-
-            <Navbar></Navbar>
-            </View>
-        </View>
+        <Provider store={store}>
+            <PersistGate loading={null} persistor={persistor}>
+                <PageContainer></PageContainer>
+            </PersistGate>
+        </Provider>
     );
-    
+
 }
 
-export default Home;
+export default Root;
