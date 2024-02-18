@@ -6,4 +6,4 @@ const HomeTab = () => {
   )
 }
 
-export default HomeTab
+export default HomeTab 

@@ -14,7 +14,6 @@ const ModulePreviewCard = ({ preview }) => {
                 <TouchableOpacity style={styles.moduleCardTextContainer}>
                     <View style={styles.cardTextTopRow}>
                         <Text style={styles.cardTextTitle}>Module</Text>
-
                     </View>
 
                     <View>

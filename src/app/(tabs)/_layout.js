@@ -14,7 +14,7 @@ const _layout = () => {
         <SafeAreaView style={styles.container}>
             <Provider store={store}>
                 <PersistGate loading={null} persistor={persistor}>
-                    <Tabs screenOptions={{
+                <Tabs screenOptions={{
                         headerShown: false,
                         tabBarStyle: { ...styles.tabBar },
                     }}>
@@ -31,6 +31,7 @@ const _layout = () => {
                             }}
                         />
                     </Tabs>
+
                 </PersistGate>
             </Provider>
         </SafeAreaView>

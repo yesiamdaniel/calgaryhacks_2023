@@ -1,5 +1,5 @@
 import { StyleSheet } from "react-native";
-import { COLORS, FONTS } from "../constants/themes/"
+import { COLORS, FONTS, SIZES } from "../constants/themes";
 
 const styles = StyleSheet.create({
     container: {
@@ -31,16 +31,19 @@ const styles = StyleSheet.create({
         borderRadius: 10,
     },
     cardText: {
-        color: 'white',
+        fontFamily: FONTS.DMRegular,
+        color: COLORS.white[50],
+        fontSize: SIZES.s
     },
     cardTextMoney: {
-        color: 'green',
+        color: COLORS.green[600],
         fontFamily: FONTS.DMBold,
-        fontSize: 18
+        fontSize: SIZES.m
     },
     cardTextTitle: {
-        fontWeight: 'bold',
-        color: 'white'
+        fontFamily: FONTS.DMBold,
+        color: COLORS.white[50],
+        fontSize: SIZES.ms
     },
     moduleCardTextTitle: {
 
@@ -48,9 +51,9 @@ const styles = StyleSheet.create({
     cardContainer: {
         justifyContent: 'space-between',
         alignContent: 'space-between',
-        padding: 10,
-        borderRadius: 10,
-        width: '100%'
+        padding: SIZES.s,
+        borderRadius: SIZES.s,
+        width: '100%',
     },
     moduleCardContainer: {
         justifyContent: 'space-between',
@@ -277,6 +280,14 @@ const styles = StyleSheet.create({
         justifyContent: "space-between",
         width: "100%", // take full width of the screen
     },
+    imageOverlay: {
+        height: '100%',
+        width: '100%',
+        position: "absolute",
+        backgroundColor: 'black',
+        opacity: 0.5,
+        borderRadius: SIZES.s
+    }
 });
 
 export default styles;
