@@ -35,4 +35,23 @@ const updateUserStocks = async (newStock) => {
     });
 }
 
-export {getUserData, setUserData, updateUserStocks}
+const getUserStocks = async () => {
+    const userRef = doc(db, "users", auth.currentUser.uid);
+    try {
+        const docSnap = await getDoc(userRef);
+        if (docSnap.exists()) {
+            // Assuming 'stocks' is an array of stock objects in your user document
+            const stocks = docSnap.data().stocks;
+            console.log("User stocks:", stocks);
+            return stocks;
+        } else {
+            console.log("No such user document!");
+            return [];
+        }
+    } catch (error) {
+        console.error("Error getting user stocks:", error);
+        return [];
+    }
+}
+
+export {getUserData, setUserData, updateUserStocks, getUserStocks}
