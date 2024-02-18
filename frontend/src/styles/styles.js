@@ -71,7 +71,7 @@ const styles = StyleSheet.create({
         borderRadius: 10,
     },
     progressBarContainer: {
-        paddingRight: 12
+        paddingRight: 7
     }
 });
 
