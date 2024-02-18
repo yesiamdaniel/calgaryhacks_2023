@@ -4,6 +4,7 @@ import {Button} from "@rneui/base"
 
 import {SearchBar} from "@rneui/themed"
 import { useState, useEffect } from "react";
+import { firebaseConfig, app, db } from "../../constants/firebase";
 
 const Explore = () => {
     const router = useRouter();

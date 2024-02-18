@@ -1,39 +1,120 @@
-import { Text, Touchable, View, StyleSheet } from "react-native";
-import { Stack, useRouter, Link } from "expo-router";
-import Login from "../components/login/LoginPage";
-import styles from "../styles/styles";
-import { SearchBar } from "@rneui/themed"
+import { StyleSheet, Text, View } from "react-native";
+import {Button} from "@rneui/base"
+import { useRouter } from "expo-router";
+import {SearchBar} from "@rneui/themed"
 import { useState, useEffect } from "react";
 import Explore from "../components/Explore/Explore"
-import { Button } from "@rneui/base";
-import PreviewCard from "../components/cards/PreviewCard";
+import Accounts from "../components/Accounts/Accounts";
+import Lesson from "../components/Lesson/Lesson";
+
+import  { getFirestore, collection, query, where, getDocs, setDoc, doc, updateDoc } from 'firebase/firestore';
+import { firebaseConfig, app, db } from "../constants/firebase";
+
 
 const Home = () => {
     const router = useRouter();
 
-    // to be passed from page to preview card
-    const mockPathTile = {
-        id: 123,
-        title: "Foundations of Financial Literacy",
-        description: "Description of learning some finance bullshit idk",
-        cashReward: 1500,
-        timeMinutes: 20, // could be a time object
-        timeHours: 0,
-        progress: 75 // this will be stored in the user object
-    };
+    const [path1Data, setPath1Data] = useState(undefined);
+    const [module1Data, setModule1Data] = useState(undefined);
+    const [lessonsData, setLessonsData] = useState([{
+        name:""
+    }]);
+   
+
+    const path1_data = () => {
+            const q = query(collection(db, "Path1/"), where("id", "==", 0));
+            const docs = getDocs(q).then((docs) => {  
+            docs.forEach((x) => {
+                setPath1Data(x.data());
+                
+            })             
+    });
+}
+
+    const module1_data = () => {
+        const q = query(collection(db, "Path1/Path1/Module1.1"), where("id", "==", 0));
+
+        const docs = getDocs(q).then((docs) => {  
+
+        docs.forEach((x) => {
+                setModule1Data(x.data());
+            })             
+        });
+
+    }
+
+    const lessons_data = () => {
+        const q = query(collection(db, "Path1/Path1/Module1.1"), where("id", ">", 0));
+
+        const docs = getDocs(q).then((docs) => {  
+
+        const arr = [];
+
+        docs.forEach((x) => {
+            if (lessonsData[0].name === "") {
+                setLessonsData([x.data()]);
+            }
+            else {
+                setLessonsData(old => [...old, x.data()]);  
+            }
+
+            })             
+        });
+    
+    }
+    
+
+
+    useEffect(() => {
+        if (path1Data == undefined) {
+            path1_data();
+        }
+        if (module1Data == undefined) {
+            module1_data();
+        }
+        if (lessonsData[0].name === "") {
+            lessons_data();
+        }
+        alert(JSON.stringify(lessonsData[0]));
+    }, [,]); 
+
+    
+
 
     return (
+
         <View style={styles.container}>
+            
+        <Lesson info={lessonsData[0]}>
 
-            <View style={styles.main}>
+        </Lesson>
+   
 
-                <Explore>
-
-                </Explore>
-                <PreviewCard preview={mockPathTile}></PreviewCard>
-            </View>
         </View>
     );
+    
 }
+
+const styles = StyleSheet.create({
+    container: {
+        flex: 1,
+        alignItems: "center",
+        padding: 24,
+    },
+    main: {
+        flex: 1,
+        justifyContent: "center",
+        maxWidth: 960,
+        marginHorizontal: "auto",
+    },
+    title: {
+        fontSize: 64,
+        fontWeight: "bold",
+    },
+    subtitle: {
+        fontSize: 36,
+        color: "#38434D",
+    },
+});
 
 export default Home;
