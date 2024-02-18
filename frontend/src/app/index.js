@@ -85,9 +85,8 @@ const Home = () => {
         <View style={styles.container}>
         
         <Lesson info={lessonsData[0]}>
-
+            
         </Lesson>
-   
 
         </View>
     );

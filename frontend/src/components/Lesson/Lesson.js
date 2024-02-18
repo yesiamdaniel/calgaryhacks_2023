@@ -15,7 +15,16 @@ import { firebaseConfig, app, db } from "../../constants/firebase";
 const Lesson = (props) => {
     const router = useRouter();
 
-    [currentView, setView] = useState("quiz");
+    [currentView, setView] = useState("lesson");
+
+
+    const gotoQuiz = () => {
+        setView("quiz");
+    }
+
+    const gotoLesson = () => {
+        setView("lesson");
+    }
 
 
     const testFire = () => {
@@ -44,6 +53,8 @@ const Lesson = (props) => {
 
         <ScrollView style={styles.scrollView}>
           <View style={styles.container}>
+          <ImageBackground
+    source={require("../../assets/quiz_background.png")} resizeMode='cover' style={{flex:1, width:"100%", height:"100%", alignItems:"center"}}>
   
           <View style={styles.topBar}>
   
@@ -54,14 +65,23 @@ const Lesson = (props) => {
               </View>
               <View style={styles.main}>
                   
+              <View style={styles.contentBox}>    
               <Text h3Style={styles.contentText} h3 adjustsFontSizeToFit={true}>
                   {props.info.text}
                   </Text>
-  
+                </View>
+                <Button color="#ffffff" 
+        titleStyle={{color:"black"}}
+        style={styles.answerButton} 
+        title={"Apply your knowledge!"}
+        onPress={gotoQuiz}
+        radius="15">
+        </Button>
+ 
           
   
               </View>
-  
+        </ImageBackground>
           </View>
           </ScrollView>
           </SafeAreaView>
@@ -71,19 +91,30 @@ const Lesson = (props) => {
       const quiz = (
 <SafeAreaView style={styles.SafeAreaView}>
 
-<ScrollView style={styles.scrollView}>
+<ScrollView contentContainerStyle={{flexGrow:1}} style={styles.scrollView}>
 
   <View style={styles.container}>
   <ImageBackground
-    source={require("../../assets/quiz_background.png")} resizeMode='cover' style={{flex:1, width:"100%", height:"100%"}}>
+    source={require("../../assets/quiz_background.png")} resizeMode='cover' style={{flex:1, width:"100%", height:"100%",  backgroundPosition: 'center',
+    backgroundSize: 'cover',
+    backgroundRepeat: 'no-repeat', alignItems:"left"}}>
 
-  <View style={styles.topBar}>
 
-          <Text h3Style={styles.header} h3>
-                  
-          </Text>
 
-      </View>
+  <Button color="#ffffff" 
+        titleStyle={{color:"black"}}
+        style={        {padding:5,
+            radius:10,
+            shadowColor: '#171717',
+            shadowOffset: {width: -2, height: 4},
+            shadowOpacity: 0.3,
+            shadowRadius: 3, width:"40%", marginBottom:40}}
+        title={"<<"}
+        onPress={gotoLesson}
+        radius="15">
+        </Button>
+
+ 
       <View style={styles.main}>
           
 
@@ -167,7 +198,7 @@ const styles = StyleSheet.create({
         paddingTop: 24,
         backgroundColor: "#ffffff",
         width: Dimensions.get('window').width,
-        height: Dimensions.get('window').height
+        alignItems:"center"
 
     },
     main: {
@@ -187,7 +218,7 @@ const styles = StyleSheet.create({
         color: "#38434D",
     },
     header: {
-        color:"#6b53ff",
+        color:"#000000",
         marginLeft:"10%",
         alignSelf:"flex-start",
         flex:1,
@@ -198,8 +229,15 @@ const styles = StyleSheet.create({
     topBar: {
        
         flexDirection:"row",
-        width: "100%",
-        marginBottom:100
+        width: "80%",
+        marginBottom:100,
+        shadowColor: '#171717',
+        shadowOffset: {width: -2, height: 4},
+        shadowOpacity: 0.3,
+        shadowRadius: 8,
+        backgroundColor:"#ffffff",
+        borderRadius:10,
+        marginTop:20
     },
     topLeftIcon: {
         flex:1,
@@ -220,7 +258,7 @@ const styles = StyleSheet.create({
         flex:1,
         paddingTop:0
     },
-    contentText: {
+    quizText: {
         color:"black",
         marginLeft:"10%",
         width:"80%",
@@ -234,13 +272,19 @@ const styles = StyleSheet.create({
         height:60,
         overflow:"hidden"
     },
+    contentText: {
+        color:"black",
+        marginLeft:"10%",
+        width:"80%",
+        alignSelf:"flex-start",
+        fontSize:20,
+        textAlign:"center"
+    },
     scrollView : {
-        marginHorizontal:0,
-        height: Dimensions.get('window').height
+        marginHorizontal:0
     },
     SafeAreaView: {
-        width: Dimensions.get('window').width,
-        height: Dimensions.get('window').height
+        width: Dimensions.get('window').width
     },
     answerButton:{
         padding:5,
@@ -257,8 +301,10 @@ const styles = StyleSheet.create({
         gap:15,
         marginTop:50   
     },
-    questionBox: {
-    
+    contentBox: {
+        backgroundColor:"#ffffff",
+        width:"80%",
+        borderRadius:20
     }
     
 
